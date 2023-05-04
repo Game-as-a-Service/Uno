@@ -36,7 +36,14 @@ poetry install
 ```
 
 ## 測試
-```
+```shell
+# unit test 全部
+pytest
+
+# unit test 單一
+pytest -q tests/model/test_game.py 
+
+
 ```
 
 
