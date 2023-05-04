@@ -6,9 +6,6 @@ authors = ["w91379137 <w913791379137@gmail.com>"]
 readme = "README.md"
 packages = [{include = "src"}]
 
-[tool.poetry.scripts]
-app = 'src.web.app:run'
-
 [tool.poetry.dependencies]
 python = "^3.9"
 flask = "^2.3.2"

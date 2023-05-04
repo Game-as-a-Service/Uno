@@ -13,7 +13,7 @@ poetry shell
 poetry install
 
 # Run the Python server
-poetry run app
+./start.sh
 ```
 
 ## 測試
