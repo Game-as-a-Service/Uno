@@ -1,4 +1,23 @@
 
+# 資料夾結構
+
+## src [Production Code 程式碼]
+
+* model         >> CA 中的 Entities
+* usecase       >> CA 中的 Use cases
+* web           >> CA 中的 Adapter/Controllers + Presenters
+* repository    >> CA 中的 Adapter/Gateways
+
+## features [BDD 測試資料夾]
+
+* Gherkin
+* https://ithelp.ithome.com.tw/articles/10226615
+* Behave
+
+## tests [TDD 測試資料夾]
+
+* pytest
+
 # 環境建置
 
 ## 安裝 poetry
