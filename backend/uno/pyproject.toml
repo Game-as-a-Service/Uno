@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "uno"
+version = "0.1.0"
+description = ""
+authors = ["w91379137 <w913791379137@gmail.com>"]
+readme = "README.md"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+flask = "^2.3.2"
+pytest = "^7.3.1"
+behave = "^1.2.6"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
