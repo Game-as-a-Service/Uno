@@ -1,7 +1,7 @@
 
 # pytest -q tests/model/test_game.py
 
-from uno.src.model.game import Game, GameState
+from game.uno.model.game import Game, GameState
 
 def test_createGame():
     

@@ -37,13 +37,18 @@ poetry install
 
 ## 測試
 ```shell
-# unit test 全部
+# Unit Test 全部檔案
 pytest
 
-# unit test 單一
+# Unit Test 單一檔案
 pytest -q tests/model/test_game.py 
 
+# Behavior Test 全部檔案
+behave
 
+# Behavior Test 單一檔案
+behave -i features/game.feature
 ```
+
 
 
