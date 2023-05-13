@@ -1,6 +1,6 @@
 
-from src.model.game import Game
-from src.model.game_repository import GameRepository
+from uno.model.game import Game
+from uno.model.game_repository import GameRepository
 
 class CreateGameUseCase:
 
