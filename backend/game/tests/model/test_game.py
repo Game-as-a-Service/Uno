@@ -13,4 +13,4 @@ def test_createGame():
 
     # Assert
     assert game.id == id
-    assert game.state == GameState.Created
+    assert game.state == GameState.waiting
