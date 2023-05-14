@@ -14,3 +14,19 @@ def test_createGame():
     # Assert
     assert game.id == id
     assert game.state == GameState.waiting
+
+
+def test_joinGame():
+        
+    # Arrange
+    game_id = 1
+    game = Game.createGame(game_id)
+    player_id = 101
+
+    # Act
+    game.joinPlayer(player_id)
+
+    # Assert
+    assert len(game.players) == 1
+    assert game.state == GameState.waiting
+    assert game.host == player_id

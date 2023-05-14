@@ -8,5 +8,10 @@ class CreateGameUseCase:
         self.repository = repository
 
     def execute(self, game_id: int):
+        # 查
+        
+        # 改
         game = Game.createGame(game_id)
+        # 存
         self.repository.save_or_update(game)
+        # 推？
