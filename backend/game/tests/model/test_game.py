@@ -49,7 +49,91 @@ def test_有第二個人加入():
     assert game.state == GameState.waiting
     assert game.host == player_id_A
 
+def test_重複的玩家加入():
+
+    # Arrange > given
+    game_id = 2
+    game = Game.createGame(game_id)
+
+    # raise Exception("player already in game") # 產生錯誤
+
+    # Act > when
+    try:
+        game.joinPlayer(11)
+    except Exception as e:
+        assert str(e) == "player already in game"
+
+def test_第11人():
+     # Arrange > given
+    game_id = 2
+    game = Game.createGame(game_id)
+    player_id_A = 101
+    player_id_B = 102
+    player_id_C = 103
+    player_id_D = 104
+    player_id_E = 105
+    player_id_F = 106
+    player_id_G = 107
+    player_id_H = 108
+    player_id_I = 109
+    player_id_J = 110
+    player_id_K = 111
+    game.joinPlayer(player_id_A)
+    game.joinPlayer(player_id_B)
+    game.joinPlayer(player_id_C)
+    game.joinPlayer(player_id_D)
+    game.joinPlayer(player_id_E)
+    game.joinPlayer(player_id_F)
+    game.joinPlayer(player_id_G)
+    game.joinPlayer(player_id_H)
+    game.joinPlayer(player_id_I)
+    game.joinPlayer(player_id_J)
+
+    # Act > when
+    game.joinPlayer(player_id_K)
+
+    #Then
+    try:
+        len(game.players) <= 10
+    except Exception as f:
+        assert str(f) == "too many players"
+
+def 遊戲是等待中才能加入():
+    #Arrange > given
+    game_id = 2
+    game = Game.createGame(game_id)
+    game.state = GameState.waiting
+    player_id_A = 101
+    player_id_B = 102
+    player_id_C = 103
+    game.joinPlayer(player_id_A)
+    game.joinPlayer(player_id_B)
+
+    #Act > when
+    game.joinPlayer(player_id_C)
+
+    #then
+    assert len(game.players) == 3
+    assert game.state == GameState.waiting
 
 
+def 非等待中狀態不能加入():
+    #Arrange > given
+    game_id = 2
+    game = Game.createGame(game_id)
+    game.state = GameState.playing
+    player_id_A = 101
+    player_id_B = 102
+    player_id_C = 103
+    game.joinPlayer(player_id_A)
+    game.joinPlayer(player_id_B)
 
-    
+    #Act > when
+    game.joinPlayer(player_id_C)
+
+    #then
+    try:
+        len(game.players) == 2
+        assert game.state == GameState.playing
+    except Exception as g:
+        assert str(g) == "Game is beginning"
