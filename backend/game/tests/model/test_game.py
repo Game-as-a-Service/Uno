@@ -1,9 +1,10 @@
 
 # pytest -q tests/model/test_game.py
 
+import pytest
 from game.uno.model.game import Game, GameState
 
-def test_createGame():
+def test_創立遊戲():
     
     # Arrange
     id = 1
@@ -58,10 +59,11 @@ def test_重複的玩家加入():
     # raise Exception("player already in game") # 產生錯誤
 
     # Act > when
-    try:
+    with pytest.raises(Exception) as e:
         game.joinPlayer(11)
-    except Exception as e:
-        assert str(e) == "player already in game"
+    
+    #Then    
+    assert str(e) == "player already in game"
 
 def test_第11人():
      # Arrange > given
@@ -90,15 +92,13 @@ def test_第11人():
     game.joinPlayer(player_id_J)
 
     # Act > when
-    game.joinPlayer(player_id_K)
+    with pytest.raises(Exception) as e:
+        game.joinPlayer(player_id_K)
 
     #Then
-    try:
-        len(game.players) <= 10
-    except Exception as f:
-        assert str(f) == "too many players"
+    assert str(e) == "too many players"
 
-def 遊戲是等待中才能加入():
+def test_遊戲是等待中才能加入():
     #Arrange > given
     game_id = 2
     game = Game.createGame(game_id)
@@ -111,13 +111,13 @@ def 遊戲是等待中才能加入():
 
     #Act > when
     game.joinPlayer(player_id_C)
-
+        
     #then
     assert len(game.players) == 3
     assert game.state == GameState.waiting
 
 
-def 非等待中狀態不能加入():
+def test_非等待中狀態不能加入():
     #Arrange > given
     game_id = 2
     game = Game.createGame(game_id)
@@ -129,11 +129,9 @@ def 非等待中狀態不能加入():
     game.joinPlayer(player_id_B)
 
     #Act > when
-    game.joinPlayer(player_id_C)
+    with pytest.raises(Exception) as e:
+        game.joinPlayer(player_id_C)
 
     #then
-    try:
-        len(game.players) == 2
-        assert game.state == GameState.playing
-    except Exception as g:
-        assert str(g) == "Game is beginning"
+    assert str(e) == "Game is beginning"
+
