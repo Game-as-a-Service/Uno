@@ -59,6 +59,9 @@ class Game:
         return result
 
     def joinPlayer(self, player_id: int):
+        
+        if player_id in self.players:
+            raise Exception("player already in game")
         self.players.append(player_id)
 
 # test = Game.createGame(1)

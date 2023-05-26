@@ -53,17 +53,19 @@ def test_有第二個人加入():
 def test_重複的玩家加入():
 
     # Arrange > given
-    game_id = 2
+    game_id = 1
     game = Game.createGame(game_id)
+    player_id_A = 101
+    game.joinPlayer(player_id_A)
 
     # raise Exception("player already in game") # 產生錯誤
 
     # Act > when
-    with pytest.raises(Exception) as e:
-        game.joinPlayer(11)
+    with pytest.raises(Exception) as exception_info:
+        game.joinPlayer(player_id_A)
     
     #Then    
-    assert str(e) == "player already in game"
+    assert exception_info.value.args[0] == "player already in game"
 
 def test_第11人():
      # Arrange > given
