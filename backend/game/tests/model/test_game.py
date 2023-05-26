@@ -94,11 +94,11 @@ def test_第11人():
     game.joinPlayer(player_id_J)
 
     # Act > when
-    with pytest.raises(Exception) as e:
+    with pytest.raises(Exception) as exception_info:
         game.joinPlayer(player_id_K)
 
     #Then
-    assert str(e) == "too many players"
+    assert exception_info.value.args[0] == "too many players"
 
 def test_遊戲是等待中才能加入():
     #Arrange > given
@@ -131,9 +131,9 @@ def test_非等待中狀態不能加入():
     game.joinPlayer(player_id_B)
 
     #Act > when
-    with pytest.raises(Exception) as e:
+    with pytest.raises(Exception) as exception_info:
         game.joinPlayer(player_id_C)
 
     #then
-    assert str(e) == "Game is beginning"
+    assert exception_info.value.args[0] == "Game is beginning"
 
