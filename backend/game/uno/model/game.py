@@ -59,9 +59,15 @@ class Game:
         return result
 
     def joinPlayer(self, player_id: int):
+
+        # pre condition
+        if len(self.players) >= 10:
+            raise Exception("too many players")
         
         if player_id in self.players:
             raise Exception("player already in game")
+        
+        # do
         self.players.append(player_id)
 
 # test = Game.createGame(1)
