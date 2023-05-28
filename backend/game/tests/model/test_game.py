@@ -67,6 +67,13 @@ def test_重複的玩家加入():
     #Then    
     assert exception_info.value.args[0] == "player already in game"
 
+    # 如果沒有發生錯誤 則這個測試 竟然也不會報錯
+    # try:
+    #     game.joinPlayer(player_id_A)
+    # except Exception as exception_info:
+    #     # 因為 有 raise 才會跑到這一行 
+    #     assert str(exception_info) == "player already in game"
+
 def test_第11人():
      # Arrange > given
     game_id = 2
@@ -99,6 +106,11 @@ def test_第11人():
 
     #Then
     assert exception_info.value.args[0] == "too many players"
+
+    # try:
+    #     game.joinPlayer(player_id_K)
+    # except Exception as exception_info:
+    #     assert exception_info.value.args[0] == "too many players"
 
 def test_遊戲是等待中才能加入():
     #Arrange > given

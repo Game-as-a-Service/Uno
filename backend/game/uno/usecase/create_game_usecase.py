@@ -8,10 +8,19 @@ class CreateGameUseCase:
         self.repository = repository
 
     def execute(self, game_id: int):
-        # 查
-        
-        # 改
-        game = Game.createGame(game_id)
-        # 存
-        self.repository.save_or_update(game)
-        # 推？
+        try:
+            # 查
+                    
+            # 改
+            game = Game.createGame(game_id)
+            # 存
+            self.repository.save_or_update(game)
+            # 推？
+        except ValueError as e:
+            print(e)
+
+        except Exception as e:
+            # pass
+            print(e)
+
+
