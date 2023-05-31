@@ -135,12 +135,12 @@ def test_非等待中狀態不能加入():
     #Arrange > given
     game_id = 2
     game = Game.createGame(game_id)
-    game.state = GameState.playing
     player_id_A = 101
     player_id_B = 102
     player_id_C = 103
     game.joinPlayer(player_id_A)
     game.joinPlayer(player_id_B)
+    game.state = GameState.playing
 
     #Act > when
     with pytest.raises(Exception) as exception_info:
@@ -149,3 +149,77 @@ def test_非等待中狀態不能加入():
     #then
     assert exception_info.value.args[0] == "Game is beginning"
 
+def test_只有房主能開始遊戲():
+    #Arrange > given
+    game_id = 2
+    game = Game.createGame(game_id)
+    game.state = GameState.waiting
+    player_id_A = 101
+    player_id_B = 102
+    player_id_C = 103
+    game.joinPlayer(player_id_A)
+    game.host == player_id_A
+    game.joinPlayer(player_id_B)
+    game.joinPlayer(player_id_C)
+
+    #Act > when
+    game.startButton(game.players, player_id_A)
+
+    #then
+    assert game.state==GameState.preparing
+
+    
+def test_玩家不能開始遊戲():
+    #Arrange > given
+    game_id = 2
+    game = Game.createGame(game_id)
+    game.state = GameState.waiting
+    player_id_A = 101
+    player_id_B = 102
+    game.joinPlayer(player_id_A)
+    game.host == player_id_A
+    game.joinPlayer(player_id_B)
+
+    #Act > when
+    
+    with pytest.raises(Exception) as exception_info:
+        game.startButton(game.players, player_id_B)
+
+
+
+def test_1個人不能玩遊戲():
+    #Arrange > given
+    game_id = 2
+    game = Game.createGame(game_id)
+    game.state = GameState.waiting
+    player_id_A = 101
+    game.joinPlayer(player_id_A)
+    game.host == player_id_A
+
+#Act > when
+    
+    with pytest.raises(Exception) as exception_info:
+        game.players <2
+
+
+
+'''def test_點數最大優先出牌():
+    game_id = 2
+    game = Game.createGame(game_id)
+    game.players==3
+    player_id_A = 101
+    player_id_B = 102
+    player_id_C = 103
+    game.joinPlayer(player_id_A)
+    game.joinPlayer(player_id_B)
+    game.joinPlayer(player_id_C)
+    game.state = GameState.preparing
+    game.players[0] == 1
+    game.players[1] == 8
+    game.players[2] == 5
+
+    #Act > when
+
+    
+    #then
+'''

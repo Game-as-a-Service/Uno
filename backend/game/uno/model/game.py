@@ -67,8 +67,23 @@ class Game:
         if player_id in self.players:
             raise Exception("player already in game")
         
+        if self.state != GameState.waiting:
+            raise Exception("Game is beginning")
+        
         # do
         self.players.append(player_id)
+
+    def startButton(self, players, player_id) :
+        if player_id==self.host:
+            if len(players) > 1:
+                    self.state = GameState.preparing
+                    return self.state
+            else:
+                raise Exception("Players not enough")
+        else:
+                raise Exception("Players access deny")
+
+        
 
 # test = Game.createGame(1)
 

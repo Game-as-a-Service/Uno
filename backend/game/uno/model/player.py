@@ -4,7 +4,7 @@ from typing import Any
 
 class Player:
 
-    def do_add_plus1(self, a: int, b: int) -> int:
+    '''def do_add_plus1(self, a: int, b: int) -> int:
 
         if (a < 0):
             return -1 #magic number # 隱喻
@@ -38,3 +38,11 @@ class Player:
         # ....
 
         return a + b
+        '''
+    
+    def __init__(self, deck, playerstate )
+        self.deck=deck
+        self.playerstate=playerstate
+        
+    def unoState(deck:int, player_id):
+        if game.players.deck.number == 1:
