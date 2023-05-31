@@ -185,6 +185,9 @@ def test_玩家不能開始遊戲():
     with pytest.raises(Exception) as exception_info:
         game.startButton(game.players, player_id_B)
 
+    #then
+    assert exception_info.value.args[0] == "Players access deny"
+
 
 
 def test_1個人不能玩遊戲():
