@@ -199,10 +199,10 @@ def test_1個人不能玩遊戲():
     game.joinPlayer(player_id_A)
     game.host == player_id_A
 
-#Act > when
-    
+    #Act > when
     with pytest.raises(Exception) as exception_info:
-        game.players <2
+        game.startButton(game.players, player_id_A)
+
 
 
 
