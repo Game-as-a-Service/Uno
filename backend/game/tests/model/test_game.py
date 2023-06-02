@@ -2,7 +2,7 @@
 # pytest -q tests/model/test_game.py
 
 import pytest
-from game.uno.model.drawpile import drawpile
+from game.uno.model.drawpile import Drawpile
 from game.uno.model.game import Game, GameState
 
 def test_創立遊戲():
