@@ -1,6 +1,6 @@
 
-from game.uno.model.game_repository import GameRepository
-from game.uno.model.player_repository import PlayerRepository
+from game.uno.usecase.game_repository import GameRepository
+from game.uno.usecase.player_repository import PlayerRepository
 
 class JoinGameUseCase:
 
