@@ -2,8 +2,9 @@
 # pytest -q tests/model/test_game.py
 
 import pytest
+from game.uno.model.drawpile import drawpile
 from game.uno.model.game import Game, GameState
-
+'''
 def test_創立遊戲():
     
     # Arrange
@@ -203,10 +204,11 @@ def test_1個人不能玩遊戲():
     with pytest.raises(Exception) as exception_info:
         game.startButton(game.players, player_id_A)
 
-
-
-
-'''def test_點數最大優先出牌():
+    #then
+    assert exception_info.value.args[0] == "Players not enough"
+'''
+    
+def test_點數最大優先出牌():
     game_id = 2
     game = Game.createGame(game_id)
     game.players==3
@@ -217,12 +219,18 @@ def test_1個人不能玩遊戲():
     game.joinPlayer(player_id_B)
     game.joinPlayer(player_id_C)
     game.state = GameState.preparing
+    game.turn.append(player_id_A)
     game.players[0] == 1
     game.players[1] == 8
     game.players[2] == 5
 
-    #Act > when
-
+    #Act > when   玩家B 先開始遊戲
+    game.turn[0] == game.players[1]
     
-    #then
-'''
+    
+    
+    #then 可以翻開第一張牌
+    assert drawpile.shuffleCard(cardcode)  
+    assert game.host == player_id_A
+    assert game.state == GameState.playing
+    assert game.turn == game.players[1]

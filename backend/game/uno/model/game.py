@@ -17,11 +17,12 @@ class Game:
 
     # attribte_a = 1234
 
-    def __init__(self, id: int, state: GameState = GameState.waiting, players: List[int] = []):
+    def __init__(self, id: int, state: GameState = GameState.waiting, players: List[int] = [], turn: List[int] = [] ):
         print("init")
         self.id = id
         self.state = state
         self.players = players
+        self.turn = turn     #玩家回合
 
         # self.attribte_b = 5678
         # self._attribte_c = 9999
@@ -83,6 +84,8 @@ class Game:
         else:
                 raise Exception("Players access deny")
 
+              
+              
         
 
 # test = Game.createGame(1)
