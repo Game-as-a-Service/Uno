@@ -21,6 +21,8 @@ class CardSymbol(IntEnum):
     Wild = 13
     WildDrawFour = 14
 
+NumberCardSymbol = [CardSymbol.N0, CardSymbol.N1, CardSymbol.N2, CardSymbol.N3, CardSymbol.N4, CardSymbol.N5, CardSymbol.N6, CardSymbol.N7, CardSymbol.N8, CardSymbol.N9]
+
 @unique
 class CardColor(IntEnum):
     Blue = 1
@@ -65,16 +67,19 @@ class Card:
                 result.append(Card(CardSymbol.Reverse, color, CardFunction.Reverse))
                 result.append(Card(CardSymbol.DrawTwo, color, CardFunction.DrawTwo))
 
-        # Wild WildDrawFour 各 4
-        for _ in range(4):
+        # Wild 8
+        for _ in range(8):
             result.append(Card(CardSymbol.Wild, CardColor.Wild, CardFunction.Nouse))
+
+        # WildDrawFour 4
+        for _ in range(4):
             result.append(Card(CardSymbol.WildDrawFour, CardColor.Wild, CardFunction.DrawFour))
 
         return result
    
     def __init__(self, symbol: CardSymbol, color: CardColor, function: CardFunction):
         
-        self.number: CardSymbol = symbol
+        self.symbol: CardSymbol = symbol
         self.color: CardColor = color
         self.function: CardFunction = function
 
