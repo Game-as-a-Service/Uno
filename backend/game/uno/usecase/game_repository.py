@@ -1,7 +1,7 @@
 
 import abc
 from typing import Optional
-from .game import Game
+from ..model.game import Game
 
 class GameRepository(metaclass=abc.ABCMeta):
     @abc.abstractmethod

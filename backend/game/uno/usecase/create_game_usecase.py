@@ -1,6 +1,6 @@
 
 from uno.model.game import Game
-from uno.model.game_repository import GameRepository
+from uno.usecase.game_repository import GameRepository
 
 class CreateGameUseCase:
 
