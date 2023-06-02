@@ -40,9 +40,7 @@ class Player:
         return a + b
         '''
     
-    def __init__(self,id, ):
-        pass
+    def __init__(self, isUnoState: bool, isSkipState: bool):
+        self.isUnoState: bool = isUnoState
+        self.isSkipState: bool = isSkipState
         
-    def unoState(deck:int, player_id):
-        if game.players.deck.number == 1:
-            return

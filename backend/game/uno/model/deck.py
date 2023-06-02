@@ -1,4 +1,8 @@
-class deck:
+from typing import List
+from card import Card
 
-    def __init__(self, number:int):
-        self.number=number
+class Deck:
+
+    def __init__(self, player: int, cardList: List[Card]):
+        self.player: int = player
+        self.cardList = cardList
