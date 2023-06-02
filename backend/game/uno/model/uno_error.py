@@ -1,0 +1,3 @@
+
+class UnoError(Exception):
+    pass

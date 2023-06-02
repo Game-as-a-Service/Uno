@@ -1,6 +1,7 @@
 
 from enum import Enum, unique
 from typing import List, Optional
+from .uno_error import UnoError
 
 @unique
 class GameState(Enum):
@@ -63,13 +64,13 @@ class Game:
 
         # pre condition
         if len(self.players) >= 10:
-            raise Exception("too many players")
+            raise UnoError("too many players")
         
         if player_id in self.players:
-            raise Exception("player already in game")
+            raise UnoError("player already in game")
         
         if self.state != GameState.waiting:
-            raise Exception("Game is beginning")
+            raise UnoError("Game is beginning")
         
         # do
         self.players.append(player_id)
@@ -80,9 +81,9 @@ class Game:
                     self.state = GameState.preparing
                     return self.state
             else:
-                raise Exception("Players not enough")
+                raise UnoError("Players not enough")
         else:
-                raise Exception("Players access deny")
+                raise UnoError("Players access deny")
 
               
               

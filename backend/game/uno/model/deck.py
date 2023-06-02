@@ -1,4 +1,5 @@
 from typing import List
+from .uno_error import UnoError
 from .card import Card
 
 class Deck:
@@ -11,7 +12,10 @@ class Deck:
         if isinstance(other, Deck):
             return self.cardList[0].symbol > other.cardList[0].symbol
         else:
-            raise Exception("cannot compare(>) Deck and {}".format(type(other)))
+            raise UnoError(f"cannot compare(>) Deck and {type(other)}")
         
     def addCard(self, card: Card) -> None:
-        self.cardList.append(card) 
+        self.cardList.append(card)
+
+    def useCard(self, index: int) -> Card:
+        return self.cardList.pop(index)
