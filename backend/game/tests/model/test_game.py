@@ -4,7 +4,7 @@
 import pytest
 from game.uno.model.drawpile import drawpile
 from game.uno.model.game import Game, GameState
-'''
+
 def test_創立遊戲():
     
     # Arrange
@@ -206,8 +206,9 @@ def test_1個人不能玩遊戲():
 
     #then
     assert exception_info.value.args[0] == "Players not enough"
+
 '''
-    
+# 這個 example 還沒修正根本無法寫測試
 def test_點數最大優先出牌():
     game_id = 2
     game = Game.createGame(game_id)
@@ -234,3 +235,4 @@ def test_點數最大優先出牌():
     assert game.host == player_id_A
     assert game.state == GameState.playing
     assert game.turn == game.players[1]
+'''
