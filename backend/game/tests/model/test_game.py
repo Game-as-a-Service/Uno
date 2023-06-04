@@ -239,18 +239,18 @@ def test_點數最大優先出牌():
     assert game.turn == game.players[1]
 '''
 
-# def xtest_來比個大小():
-#     # Arrange
-#     game_id = 2
-#     game = Game.createGame(game_id)
-#     game.state = GameState.waiting
-#     game.players = [101, 102, 103]
-#     deck_A = Deck(101, [Card(CardSymbol.N1, CardColor.Red, CardFunction.Nouse)])
-#     deck_B = Deck(102, [Card(CardSymbol.N8, CardColor.Red, CardFunction.Nouse)])
-#     deck_C = Deck(103, [Card(CardSymbol.N5, CardColor.Red, CardFunction.Nouse)])
+def test_決定第一玩家():
+    # Arrange
+    game_id = 2
+    game = Game.createGame(game_id)
+    game.state = GameState.preparing
+    game.players = [101, 102, 103]
+    deck_A = Deck(101, [Card(CardSymbol.N1, CardColor.Red, CardFunction.Nouse)])
+    deck_B = Deck(102, [Card(CardSymbol.N8, CardColor.Red, CardFunction.Nouse)])
+    deck_C = Deck(103, [Card(CardSymbol.N5, CardColor.Red, CardFunction.Nouse)])
 
-#     # Act
-#     game.decideFirstPlayer([deck_A, deck_B, deck_C])
+    # Act
+    game.decideFirstPlayer([deck_A, deck_B, deck_C])
 
-#     # Assert
-#     assert game.turnPlayerId == 102
+    # Assert
+    assert game.turnPlayerId == 102

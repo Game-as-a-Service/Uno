@@ -1,16 +1,23 @@
 
-from enum import Enum, unique
+from enum import IntEnum, unique
 from typing import List, Optional
 
 from .deck import Deck
 from .uno_error import UnoError
 
 @unique
-class GameState(Enum):
+class GameState(IntEnum):
     waiting = 1
+    """等待中 等待玩家進入"""
+
     preparing = 2
+    """準備中 遊戲初始化"""
+
     playing = 3
+    """遊玩中"""
+
     end = 4
+    """已結束"""
 
 class Game:
 
