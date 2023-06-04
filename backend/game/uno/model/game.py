@@ -2,7 +2,7 @@
 from enum import Enum, unique
 from typing import List, Optional
 
-from uno.model.deck import Deck
+from .deck import Deck
 from .uno_error import UnoError
 
 @unique
