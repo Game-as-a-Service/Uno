@@ -39,7 +39,7 @@ class CardFunction(IntEnum):
     Skip = 2
     Reverse = 3
     DrawTwo = 4
-    DrawFour = 6
+    DrawFour = 5
 
 class Card:
 

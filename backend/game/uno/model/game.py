@@ -1,6 +1,8 @@
 
 from enum import Enum, unique
 from typing import List, Optional
+
+from uno.model.deck import Deck
 from .uno_error import UnoError
 
 @unique
@@ -18,12 +20,23 @@ class Game:
 
     # attribte_a = 1234
 
-    def __init__(self, id: int, state: GameState = GameState.waiting, players: List[int] = [], turn: List[int] = [] ):
-        print("init")
+    def __init__(self, 
+                 id: int, 
+                 state: GameState = GameState.waiting, 
+                 players: List[int] = [], 
+                 turnPlayerId: int = 0):
+        
         self.id = id
+        """遊戲編號"""
+
         self.state = state
+        """遊戲狀態"""
+
         self.players = players
-        self.turn = turn     #玩家回合
+        """玩家列表"""
+
+        self.turnPlayerId = turnPlayerId
+        """回合玩家"""
 
         # self.attribte_b = 5678
         # self._attribte_c = 9999
@@ -85,6 +98,26 @@ class Game:
         else:
                 raise UnoError("Players access deny")
 
+    def decideFirstPlayer(self, deckList: List[Deck]):
+
+        # 有限狀態機
+         
+        # pre condition
+        if self.state != GameState.preparing:
+            raise UnoError("Game is not preparing")
+        
+        if len(deckList) <= 0:
+            raise UnoError("No deck")
+        
+        # do
+        maxDeck = deckList[0]
+        for deck in deckList:
+            if deck > maxDeck:
+                maxDeck = deck
+
+        self.turnPlayerId = maxDeck.playerId
+        
+        
               
               
         
