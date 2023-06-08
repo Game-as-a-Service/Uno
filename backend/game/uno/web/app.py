@@ -1,11 +1,15 @@
 
 from flask import Flask
 
-app = Flask(__name__)
+from .containers import Container
+from . import views
 
-@app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
+# ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
+container = Container()
+
+app = Flask(__name__)
+app.container = container
+app.add_url_rule("/", "hello_world", views.hello_world)
 
 if __name__ == "__main__":
     app.run()
