@@ -18,6 +18,8 @@ def start_game(usecase: StartGameUseCase = Provide[Container.startGameUseCase]):
     if player_id == None:
         return "<p>Player id is required!</p>"
     
+    game_id = int(game_id)
+    player_id = int(player_id)
     game = usecase.execute(game_id, player_id)
 
     return f"<p>start_game!{game}</p>"

@@ -13,6 +13,7 @@ def get_all(usecase: GetAllUsecase = Provide[Container.getAllUsecase]):
     if game_id == None:
         return "<p>Game id is required!</p>"
 
+    game_id = int(game_id)
     msgList = usecase.execute(game_id)
 
     result = '<br>'.join(msgList)

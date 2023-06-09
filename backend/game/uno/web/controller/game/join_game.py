@@ -16,6 +16,8 @@ def join_game(usecase: JoinGameUseCase = Provide[Container.joinGameUseCase]):
     if player_id == None:
         return "<p>Player id is required!</p>"
     
+    game_id = int(game_id)
+    player_id = int(player_id)
     game = usecase.execute(game_id, player_id)
 
     return f"<p>join_game!{game}</p>"

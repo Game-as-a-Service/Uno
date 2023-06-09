@@ -14,6 +14,7 @@ def create_game(usecase: CreateGameUseCase = Provide[Container.createGameUseCase
     if game_id == None:
         return "<p>Game id is required!</p>"
 
+    game_id = int(game_id)
     game = usecase.execute(game_id)
 
     return f"<p>Game created!{game}</p>"
