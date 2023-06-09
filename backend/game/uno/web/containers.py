@@ -8,11 +8,13 @@ from uno.usecase.create_game_usecase import CreateGameUseCase
 class Container(containers.DeclarativeContainer):
 
     # 對 views.py 的依賴
-    wiring_config = containers.WiringConfiguration(modules=[".views"])
+    wiring_config = containers.WiringConfiguration(
+        modules=[".views", ".controller.game.create_game"]
+    )
 
     # ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
     # 以下是所有的依賴
-
+    
     # repository
     gameRepository = providers.Factory(
         GameRepositoryInMemoryImpl

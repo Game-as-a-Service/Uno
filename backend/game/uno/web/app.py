@@ -12,7 +12,9 @@ container = Container()
 # 準備對外接口
 app = Flask(__name__)
 app.add_url_rule("/", "hello_world", views.hello_world)
-app.add_url_rule("/create_game", "create_game", views.create_game)
+
+from uno.web.controller.game import blueprint as game
+app.register_blueprint(game, url_prefix = '/game')
 
 if __name__ == "__main__":
     app.run()
