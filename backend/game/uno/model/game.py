@@ -95,15 +95,14 @@ class Game:
         # do
         self.players.append(player_id)
 
-    def startButton(self, players, player_id) :
-        if player_id==self.host:
-            if len(players) > 1:
-                    self.state = GameState.preparing
-                    return self.state
-            else:
-                raise UnoError("Players not enough")
-        else:
-                raise UnoError("Players access deny")
+    def start(self, player_id) :
+        if player_id != self.host:
+            raise UnoError("Players access deny")
+
+        if len(self.players) <= 1:
+            raise UnoError("Players not enough")
+        
+        self.state = GameState.preparing
 
     def decideFirstPlayer(self, deckList: List[Deck]):
 

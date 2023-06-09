@@ -6,6 +6,7 @@ from uno.repository.player_repository_in_memory_impl import PlayerRepositoryInMe
 
 from uno.usecase.create_game_usecase import CreateGameUseCase
 from uno.usecase.join_game_usecase import JoinGameUseCase
+from uno.usecase.start_game_usecase import StartGameUseCase
 
 # 教學
 # https://python-dependency-injector.ets-labs.org/tutorials/flask.html
@@ -13,7 +14,12 @@ class Container(containers.DeclarativeContainer):
 
     # 對 views.py 的依賴
     wiring_config = containers.WiringConfiguration(
-        modules=[".views", ".controller.game.create_game", ".controller.game.join_game"]
+        modules=[
+            ".views", 
+            ".controller.game.create_game", 
+            ".controller.game.join_game",
+            ".controller.game.start_game",
+        ]
     )
 
     # ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
@@ -40,4 +46,8 @@ class Container(containers.DeclarativeContainer):
         playerRepo=playerRepository,
     )
 
+    startGameUseCase = providers.Factory(
+        StartGameUseCase,
+        gameRepo=gameRepository,
+    )
     
