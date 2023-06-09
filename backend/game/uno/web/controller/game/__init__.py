@@ -6,7 +6,7 @@ blueprint = Blueprint('game', __name__)
 # api
 # ---
 
-# http://localhost:5000/game/create_game
+# http://localhost:5000/game/create_game?game_id=1
 from .create_game import create_game as _create_game
 @blueprint.route("/create_game", methods = ["GET", "POST"])
 def create_game():

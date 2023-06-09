@@ -25,4 +25,5 @@ class CreateGameUseCase:
             # pass
             print(e)
 
+        return game
 
