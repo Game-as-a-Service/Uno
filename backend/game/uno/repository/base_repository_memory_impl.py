@@ -7,7 +7,8 @@ T = TypeVar('T')
 
 class BaseRepositoryInMemoryImpl(Generic[T]):
 
-    object_list: List[T] = []
+    def __init__(self):
+        self.object_list: List[T] = []
 
     def save_or_update(self, object: T):
         if not object in self.object_list:
