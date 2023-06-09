@@ -18,4 +18,4 @@ def join_game(usecase: JoinGameUseCase = Provide[Container.joinGameUseCase]):
     
     game = usecase.execute(game_id, player_id)
 
-    return f"<p>join_game!{game.__dict__}</p>"
+    return f"<p>join_game!{game}</p>"

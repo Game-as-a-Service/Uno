@@ -1,5 +1,6 @@
 
 from enum import IntEnum, unique
+import json
 from typing import List, Optional
 
 from .deck import Deck
@@ -48,6 +49,14 @@ class Game:
         # self.attribte_b = 5678
         # self._attribte_c = 9999
         # self._attribte_d = 9999
+
+    def __str__(self):
+        result = {}
+        result["id"] = self.id
+        result["state"] = self.state
+        result["players"] = self.players
+        result["turnPlayerId"] = self.turnPlayerId
+        return json.dumps(result)
         
     # def get_attribte_c(self):
     #     return self._attribte_c

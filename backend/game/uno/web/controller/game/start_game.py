@@ -20,4 +20,4 @@ def start_game(usecase: StartGameUseCase = Provide[Container.startGameUseCase]):
     
     game = usecase.execute(game_id, player_id)
 
-    return f"<p>start_game!{game.__dict__}</p>"
+    return f"<p>start_game!{game}</p>"

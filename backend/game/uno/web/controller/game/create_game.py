@@ -16,5 +16,5 @@ def create_game(usecase: CreateGameUseCase = Provide[Container.createGameUseCase
 
     game = usecase.execute(game_id)
 
-    return f"<p>Game created!{game.__dict__}</p>"
+    return f"<p>Game created!{game}</p>"
 
