@@ -40,7 +40,12 @@ class Player:
         return a + b
         '''
     
-    def __init__(self, isUnoState: bool, isSkipState: bool):
+    def __init__(self, 
+                 id: int,
+                 isUnoState: bool = False,
+                 isSkipState: bool = False,
+        ):
+        self.id: int = id
         self.isUnoState: bool = isUnoState
         self.isSkipState: bool = isSkipState
         
