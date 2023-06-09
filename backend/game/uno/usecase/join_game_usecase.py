@@ -6,6 +6,7 @@ from uno.model.player import Player
 class JoinGameUseCase:
 
     def __init__(self, gameRepo: GameRepository, playerRepo: PlayerRepository):
+        # print("JoinGameUseCase.__init__", gameRepo, playerRepo)
         self.gameRepo = gameRepo
         self.playerRepo = playerRepo
 

@@ -5,6 +5,7 @@ from uno.usecase.game_repository import GameRepository
 class CreateGameUseCase:
 
     def __init__(self, gameRepo: GameRepository):
+        # print("CreateGameUseCase.__init__", gameRepo)
         self.gameRepo = gameRepo
 
     def execute(self, game_id: int):

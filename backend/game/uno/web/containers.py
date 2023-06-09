@@ -3,6 +3,7 @@ from dependency_injector import containers, providers
 
 from uno.repository.game_repository_in_memory_impl import GameRepositoryInMemoryImpl
 from uno.repository.player_repository_in_memory_impl import PlayerRepositoryInMemoryImpl
+from uno.repository.deck_repository_in_memory_impl import DeckRepositoryInMemoryImpl
 
 from uno.usecase.get_all_usecase import GetAllUsecase
 from uno.usecase.create_game_usecase import CreateGameUseCase
@@ -36,11 +37,16 @@ class Container(containers.DeclarativeContainer):
         PlayerRepositoryInMemoryImpl
     )
 
+    deckRepository = providers.Factory(
+        DeckRepositoryInMemoryImpl
+    )
+
     # usecase
     getAllUsecase = providers.Factory(
         GetAllUsecase,
         gameRepo=gameRepository,
         playerRepo=playerRepository,
+        deckRepo=deckRepository,
     )
 
     createGameUseCase = providers.Factory(
@@ -57,5 +63,6 @@ class Container(containers.DeclarativeContainer):
     startGameUseCase = providers.Factory(
         StartGameUseCase,
         gameRepo=gameRepository,
+        deckRepo=deckRepository,
     )
     
