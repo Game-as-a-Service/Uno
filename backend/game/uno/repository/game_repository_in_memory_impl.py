@@ -13,8 +13,8 @@ class GameRepositoryInMemoryImpl(GameRepository):
             self.data_list.append(game)
         return game.id
     
-    def get(self, game_id) -> Optional[Game] :
+    def get(self, id) -> Optional[Game] :
         for game in self.data_list:
-            if game.id == game_id:
+            if game.id == id:
                 return game
         return None

@@ -1,12 +1,12 @@
 
-from game.uno.usecase.game_repository import GameRepository
-from game.uno.usecase.player_repository import PlayerRepository
+from uno.usecase.game_repository import GameRepository
+from uno.usecase.player_repository import PlayerRepository
 
 class JoinGameUseCase:
 
-    def __init__(self, GameRepository: GameRepository, PlayerRepository: PlayerRepository):
-        self.GameRepository = GameRepository
-        self.PlayerRepository = PlayerRepository
+    def __init__(self, gameRepo: GameRepository, playerRepo: PlayerRepository):
+        self.GameRepository = gameRepo
+        self.PlayerRepository = playerRepo
 
     def execute(self, game_id: int, player_id: int):
         # 查
