@@ -111,10 +111,7 @@ class Game:
         if len(self.players) <= 1:
             raise UnoError("Players not enough")
         
-        # TODO: 目前直接跳過抽牌動作
-        self.state = GameState.playing
-        
-        
+        self.state = GameState.preparing
 
     def decideFirstPlayer(self, deckList: List[Deck]):
 

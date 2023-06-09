@@ -1,6 +1,8 @@
 
 
+from uno.model.game import GameState
 from uno.model.deck import Deck
+from uno.model.card import Card, CardSymbol, CardColor, CardFunction
 from uno.usecase.game_repository import GameRepository
 from uno.usecase.deck_repository import DeckRepository
 class StartGameUseCase:
@@ -22,9 +24,11 @@ class StartGameUseCase:
                     
             # 改
             game.start(host_id)
+            # TODO: 目前直接跳過抽牌動作
+            game.state = GameState.playing
             # TODO: 直接給牌
             for player_id in game.players:
-                deck = Deck(player_id, [])
+                deck = Deck(player_id, [Card(CardSymbol.N1, CardColor.Red, CardFunction.Nouse)])
                 self.deckRepo.save_or_update(deck)
 
             # 存

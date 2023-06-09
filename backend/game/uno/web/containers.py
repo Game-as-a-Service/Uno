@@ -9,6 +9,7 @@ from uno.usecase.get_all_usecase import GetAllUsecase
 from uno.usecase.create_game_usecase import CreateGameUseCase
 from uno.usecase.join_game_usecase import JoinGameUseCase
 from uno.usecase.start_game_usecase import StartGameUseCase
+from uno.usecase.play_card_usecase import PlayCardUsecase
 
 # 教學
 # https://python-dependency-injector.ets-labs.org/tutorials/flask.html
@@ -22,6 +23,7 @@ class Container(containers.DeclarativeContainer):
             ".controller.game.create_game", 
             ".controller.game.join_game",
             ".controller.game.start_game",
+            ".controller.game.play_card",
         ]
     )
 
@@ -62,6 +64,12 @@ class Container(containers.DeclarativeContainer):
 
     startGameUseCase = providers.Factory(
         StartGameUseCase,
+        gameRepo=gameRepository,
+        deckRepo=deckRepository,
+    )
+
+    playcardGameUseCase = providers.Factory(
+        PlayCardUsecase,
         gameRepo=gameRepository,
         deckRepo=deckRepository,
     )

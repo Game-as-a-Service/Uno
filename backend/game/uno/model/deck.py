@@ -12,7 +12,11 @@ class Deck:
     def __str__(self):
         result = {}
         result["playerId"] = self.playerId
-        result["cardList"] = self.cardList
+
+        result["cardList"] = ""
+        for card in self.cardList:
+            result["cardList"] += f",{card}"
+        
         return json.dumps(result)
 
     def __gt__(self, other):
