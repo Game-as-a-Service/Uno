@@ -22,3 +22,4 @@ class JoinGameUseCase:
         self.GameRepository.save_or_update(game)
         
         # 推？
+        return game

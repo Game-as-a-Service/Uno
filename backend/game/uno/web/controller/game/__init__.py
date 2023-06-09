@@ -12,7 +12,7 @@ from .create_game import create_game as _create_game
 def create_game():
     return _create_game(**locals())
 
-# http://localhost:5000/game/join_game
+# http://localhost:5000/game/join_game?game_id=1&player_id=101
 from .join_game import join_game as _join_game
 @blueprint.route("/join_game", methods = ["GET", "POST"])
 def join_game():
