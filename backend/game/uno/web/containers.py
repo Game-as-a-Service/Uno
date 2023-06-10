@@ -31,44 +31,44 @@ class Container(containers.DeclarativeContainer):
     # 以下是所有的依賴
     
     # repository
-    gameRepository = providers.Factory(
+    gameRepository = providers.Singleton(
         GameRepositoryInMemoryImpl
     )
 
-    playerRepository = providers.Factory(
+    playerRepository = providers.Singleton(
         PlayerRepositoryInMemoryImpl
     )
 
-    deckRepository = providers.Factory(
+    deckRepository = providers.Singleton(
         DeckRepositoryInMemoryImpl
     )
 
     # usecase
-    getAllUsecase = providers.Factory(
+    getAllUsecase = providers.Singleton(
         GetAllUsecase,
         gameRepo=gameRepository,
         playerRepo=playerRepository,
         deckRepo=deckRepository,
     )
 
-    createGameUseCase = providers.Factory(
+    createGameUseCase = providers.Singleton(
         CreateGameUseCase,
         gameRepo=gameRepository,
     )
 
-    joinGameUseCase = providers.Factory(
+    joinGameUseCase = providers.Singleton(
         JoinGameUseCase,
         gameRepo=gameRepository,
         playerRepo=playerRepository,
     )
 
-    startGameUseCase = providers.Factory(
+    startGameUseCase = providers.Singleton(
         StartGameUseCase,
         gameRepo=gameRepository,
         deckRepo=deckRepository,
     )
 
-    playcardGameUseCase = providers.Factory(
+    playcardGameUseCase = providers.Singleton(
         PlayCardUsecase,
         gameRepo=gameRepository,
         deckRepo=deckRepository,
