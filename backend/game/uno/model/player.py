@@ -1,4 +1,5 @@
 
+import json
 from typing import Any
 
 
@@ -40,7 +41,20 @@ class Player:
         return a + b
         '''
     
-    def __init__(self, isUnoState: bool, isSkipState: bool):
+    def __init__(self, 
+                 id: int,
+                 isUnoState: bool = False,
+                 isSkipState: bool = False,
+        ):
+        self.id: int = id
         self.isUnoState: bool = isUnoState
         self.isSkipState: bool = isSkipState
         
+
+    def __str__(self):
+        result = {}
+        result['id'] = self.id
+        result['isUnoState'] = self.isUnoState
+        result['isSkipState'] = self.isSkipState
+
+        return json.dumps(result)

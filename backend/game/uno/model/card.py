@@ -1,5 +1,6 @@
 
 from enum import IntEnum, unique
+import json
 from typing import List
 
 @unique
@@ -82,6 +83,13 @@ class Card:
         self.symbol: CardSymbol = symbol
         self.color: CardColor = color
         self.function: CardFunction = function
+
+    def __str__(self):
+        result = {}
+        result["symbol"] = self.symbol.value
+        result["color"] = self.color.value
+        return json.dumps(result)
+    
 
         '''
     def reverse(turn):

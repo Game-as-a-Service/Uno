@@ -4,17 +4,20 @@ from uno.usecase.game_repository import GameRepository
 
 class CreateGameUseCase:
 
-    def __init__(self, repository: GameRepository):
-        self.repository = repository
+    def __init__(self, gameRepo: GameRepository):
+        # print("CreateGameUseCase.__init__", gameRepo)
+        self.gameRepo = gameRepo
 
     def execute(self, game_id: int):
         try:
             # 查
                     
             # 改
-            game = Game.createGame(game_id)
+            game = self.gameRepo.get(game_id)
+            if game is None:
+                game = Game.createGame(game_id)
             # 存
-            self.repository.save_or_update(game)
+            self.gameRepo.save_or_update(game)
             # 推？
         except ValueError as e:
             print(e)
@@ -23,4 +26,5 @@ class CreateGameUseCase:
             # pass
             print(e)
 
+        return game
 
