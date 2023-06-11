@@ -172,7 +172,7 @@ def test_只有房主能開始遊戲():
     assert game.state==GameState.preparing
 
     
-def test_玩家不能開始遊戲():
+def test_非房主不能開始遊戲():
     #Arrange > given
     game_id = 2
     game = Game.createGame(game_id)
