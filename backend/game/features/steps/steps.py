@@ -19,7 +19,7 @@ def step_impl(context):
 @then(u'存在一個遊戲: {id:d}')
 def step_impl(context, id):
     usecase: GameRepositoryInMemoryImpl = context.usecase
-    game: Game = usecase.repository.get(context.gameId)
+    game: Game = usecase.gameRepo.get(context.gameId)
     assert game is not None
     assert game.id == id
 
