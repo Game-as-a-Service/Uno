@@ -23,7 +23,7 @@
 ## 安裝 poetry
 https://blog.kyomind.tw/python-poetry/
 
-## 啟動
+## 啟動 poetry
 ```shell
 # Activate the virtual env.
 poetry shell
@@ -33,6 +33,40 @@ poetry install
 
 # Run the Python server
 ./start.sh
+```
+
+## 啟動 自建虛擬環境
+```shell
+python -m venv venv
+
+# mac
+source ./venv/bin/active
+# windows
+.\venv\Scripts\activate.bat 
+
+pip install -r requirement.txt
+
+python app.py
+```
+
+網址
+```
+# 查詢遊戲
+http://localhost:5000/game/get_all?game_id=1
+
+# 建立遊戲
+http://localhost:5000/game/create_game?game_id=1
+
+# 玩家加入遊戲
+http://localhost:5000/game/join_game?game_id=1&player_id=101
+http://localhost:5000/game/join_game?game_id=1&player_id=102
+
+# 開始遊戲
+http://localhost:5000/game/start_game?game_id=1&player_id=101
+
+# 出牌
+http://localhost:5000/game/play_card?game_id=1&player_id=101&index=0
+
 ```
 
 ## 測試
