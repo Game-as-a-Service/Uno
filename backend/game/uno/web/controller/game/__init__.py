@@ -35,3 +35,9 @@ from .play_card import play_card as _play_card
 @blueprint.route("/play_card", methods = ["GET", "POST"])
 def play_card():
     return _play_card(**locals())
+
+# http://localhost:5000/game/check_player?player_id=101
+from .check_player import check_player as _check_player
+@blueprint.route("/check_player", methods = ["GET", "POST"])
+def check_player():
+    return _check_player(**locals())
