@@ -8,6 +8,8 @@ import { ApiService } from 'src/app/service/api/api.service';
 })
 export class StartComponent implements OnInit {
 
+  public player_id = ''
+
   // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
 
   constructor(
@@ -15,11 +17,16 @@ export class StartComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.api.createPlayer(1)
+
   }
 
   // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
-  onComfirmClicked() {
-
+  async onComfirmClicked() {
+    if (!this.player_id) {
+      this.api.checkPlayer(-1)
+    }
+    else {
+      this.api.checkPlayer(parseInt(this.player_id))
+    }
   }
 }

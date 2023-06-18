@@ -13,11 +13,12 @@ export class ApiService {
 
   // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
 
-  async createPlayer(id: number): Promise<ApiResponse> {
-
-    let path = `http://localhost:5000/game/get_all?game_id=1`
+  async checkPlayer(player_id: number): Promise<ApiResponse> {
+    let path = `http://localhost:5000/game/check_player`
     let header = {}
-    let body = {}
+    let body = {
+      player_id
+    }
     return this.convenientPost(path, body, header)
   }
 

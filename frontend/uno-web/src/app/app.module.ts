@@ -7,6 +7,7 @@ import { StartComponent } from './page/start/start.component';
 import { LobbyComponent } from './page/lobby/lobby.component';
 import { WaitComponent } from './page/wait/wait.component';
 import { GameComponent } from './page/game/game.component';
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { GameComponent } from './page/game/game.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

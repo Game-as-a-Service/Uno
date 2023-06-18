@@ -19,21 +19,20 @@ class CheckPlayerUsecase:
                 
             # 改
             if player is None:
-                id = self.playerRepo.getMaxId()
-                player = Player(id)
+                target_id = player_id
+                if target_id < 0:
+                    target_id = self.playerRepo.getMaxId()
+                player = Player(target_id)
 
             # 存
             self.playerRepo.save_or_update(player)
 
             # 查
             game = self.gameRepo.findPlayerInGame(player.id)
-            
-        except ValueError as e:
-            print(e)
 
         except Exception as e:
             # pass
-            print(e)
+            print("error", e)
 
         return {
             "game": game,

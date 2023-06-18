@@ -1,4 +1,8 @@
 
-輸入玩家編號(不輸入則新建)<br>
-<input type="text"><br>
-<button>確定</button><br>
+<h2>輸入玩家編號(不輸入則新建)</h2><br>
+<input
+  type="text"
+  [(ngModel)]="player_id"
+  placeholder="遊戲id"
+/><br>
+<button (click)="onComfirmClicked()">確定</button><br>

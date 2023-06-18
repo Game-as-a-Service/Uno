@@ -13,7 +13,7 @@ class BaseRepositoryInMemoryImpl(Generic[T]):
     def save_or_update(self, object: T):
         if not object in self.object_list:
             self.object_list.append(object)
-        print(self.object_list)
+        # print("save_or_update", self.object_list)
     
     def get(self, id) -> Optional[T] :
         for object in self.object_list:
