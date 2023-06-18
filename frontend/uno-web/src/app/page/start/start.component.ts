@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/service/api/api.service';
 
 @Component({
   selector: 'app-start',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StartComponent implements OnInit {
 
-  constructor() { }
+  // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
+
+  constructor(
+    private api: ApiService,
+  ) { }
 
   ngOnInit(): void {
+    this.api.createPlayer(1)
   }
 
+  // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
+  onComfirmClicked() {
+
+  }
 }
