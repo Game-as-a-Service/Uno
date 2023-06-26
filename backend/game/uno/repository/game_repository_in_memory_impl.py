@@ -14,4 +14,10 @@ class GameRepositoryInMemoryImpl(BaseRepositoryInMemoryImpl[Game], GameRepositor
                 return game
         return None
 
+    def getMaxId(self) -> int:
+        max_id = 0
+        for item in self.object_list:
+            if item.id > max_id:
+                max_id = item.id
+        return max_id + 1
 

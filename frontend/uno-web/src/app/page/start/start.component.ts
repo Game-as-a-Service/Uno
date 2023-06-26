@@ -19,19 +19,20 @@ export class StartComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
+
   }
 
   // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
   async onComfirmClicked() {
-    let player_id = this.player_id_str ? parseInt(this.player_id_str) : -1
-    let result = await this.api.checkPlayer(player_id)
+    let input_player_id = this.player_id_str ? parseInt(this.player_id_str) : -1
+    let result = await this.api.checkPlayer(input_player_id)
 
     if (!result.isSuccess) {
       return
     }
 
     let game_id = result.body.game_id
+    let player_id = result.body.player_id
     if (game_id) {
       let queryParams = {
         game_id,
@@ -40,7 +41,10 @@ export class StartComponent implements OnInit {
       this.router.navigate(['/game'], { queryParams })
     }
     else {
-      this.router.navigate(['/lobby'])
+      let queryParams = {
+        player_id,
+      }
+      this.router.navigate(['/lobby'], { queryParams })
     }
   }
 }

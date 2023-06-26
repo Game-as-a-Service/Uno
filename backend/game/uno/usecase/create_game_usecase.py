@@ -20,11 +20,17 @@ class CreateGameUseCase(BaseUseCase):
 
         try:
             # 查
-            game = self.gameRepo.get(input.game_id)
+            game_id = input.game_id
+            game: Optional[Game] = None
+            if game_id >= 0:
+                game = self.gameRepo.get(input.game_id)
                     
             # 改
             if game is None:
-                game = Game.createGame(input.game_id)
+                target_id = game_id
+                if target_id < 0:
+                    target_id = self.gameRepo.getMaxId()
+                game = Game.createGame(target_id)
 
             # 存
             self.gameRepo.save_or_update(game)

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { timeout } from 'rxjs/operators';
 import { CheckPlayerResponse } from './schema/check-player';
+import { CreateGameResponse } from './schema/create-game';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,15 @@ export class ApiService {
     let header = {}
     let body = {
       player_id
+    }
+    return this.convenientPost(path, body, header)
+  }
+
+  async createGame(): Promise<CreateGameResponse> {
+    let path = `http://localhost:5000/game/create_game`
+    let header = {}
+    let body = {
+      game_id: -1
     }
     return this.convenientPost(path, body, header)
   }
