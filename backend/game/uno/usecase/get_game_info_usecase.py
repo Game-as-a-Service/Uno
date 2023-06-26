@@ -40,10 +40,12 @@ class GetGameInfoUseCase(BaseUseCase):
                 deck_list: List[Deck] = []
                 for player_id in game.players:
                     player = self.playerRepo.get(player_id)
-                    player_list.append(player)
+                    if player is not None:
+                        player_list.append(player)
 
                     deck = self.deckRepo.get_by_player_id(player_id)
-                    deck_list.append(deck)
+                    if deck is not None:
+                        deck_list.append(deck)
 
                 output.game = game
                 output.player_list = player_list

@@ -34,11 +34,38 @@ class GetGameInfoPresenter(GetGameInfoUseCaseOutput, BasePresenter):
         return html
     
     def presentJson(self) -> Any:
+
+        def player_to_dto(player):
+            result = {
+                "id": player.id,
+            }
+            return result
+
+        player_dto_list = list(map(player_to_dto, self.player_list))
+
+        def card_to_dto(card):
+            result = {
+                "symbol": card.symbol,
+                "color": card.color,
+                "function": card.function,
+            }
+            return result
+
+        def deck_to_dto(deck):
+            result = {
+                "player_id": deck.playerId,
+                "card_list": list(map(card_to_dto, deck.cardList)),
+            }
+            return result
+        deck_dto_list = list(map(deck_to_dto, self.deck_list))
+
         res = {
             "isSuccess": self.isSuccess,
-            # "game": self.game,
-            # "player_list": self.player_list,
-            # "deck_list": self.deck_list,
+            "game_id": self.game.id if self.game != None else None,
+            "game_states": self.game.state if self.game != None else None,
+            "host": self.game.host if self.game != None else None,
+            "player_list": player_dto_list,
+            "deck_list": deck_dto_list,
             "error": str(self.error) if self.isSuccess == False else None,
         }
         return res
