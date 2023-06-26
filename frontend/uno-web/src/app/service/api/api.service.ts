@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { timeout } from 'rxjs/operators';
+import { CheckPlayerResponse } from './schema/check-player';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class ApiService {
 
   // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
 
-  async checkPlayer(player_id: number): Promise<ApiResponse> {
+  async checkPlayer(player_id: number): Promise<CheckPlayerResponse> {
     let path = `http://localhost:5000/game/check_player`
     let header = {}
     let body = {
@@ -33,7 +34,11 @@ export class ApiService {
     // debug(`api path: %o body: %o`, path, body);
     // console.log('api', path);
 
-    const data = await this.http.post(path, body, { headers }).pipe(timeout(waitTime))
+    let newBody = Object.assign({
+      present: "json"
+    }, body)
+
+    const data = await this.http.post(path, newBody, { headers }).pipe(timeout(waitTime))
       .toPromise()
       .catch(this.handleError);
 
@@ -56,7 +61,10 @@ export class ApiService {
 export class ApiResponse {
 
   isError = false
-
-  body: any  = {}
+  body: any = {}
   error: any = {}
+
+  get isSuccess() {
+    return this.body?.isSuccess ?? false
+  }
 }
