@@ -4,7 +4,7 @@ from uno.usecase.game_repository import GameRepository
 from uno.usecase.player_repository import PlayerRepository
 from uno.usecase.deck_repository import DeckRepository
 
-class GetAllUsecase:
+class GetGameInfoUseCase:
     def __init__(self, 
                  gameRepo: GameRepository,
                  playerRepo: PlayerRepository,

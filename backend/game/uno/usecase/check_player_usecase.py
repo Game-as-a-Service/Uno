@@ -13,7 +13,7 @@ class CheckPlayerUsecaseOutput(BaseUseCaseOutput):
     game: Optional[Game] = None
     player: Optional[Player] = None 
 
-class CheckPlayerUsecase(BaseUseCase):
+class CheckPlayerUseCase(BaseUseCase):
 
     def __init__(self, gameRepo: GameRepository, playerRepo: PlayerRepository):
         self.gameRepo = gameRepo

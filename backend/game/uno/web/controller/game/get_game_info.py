@@ -1,11 +1,11 @@
 from flask import request
 from uno.web.controller.util.api_request_base_schema import merge_request_dict
 from uno.web.containers import Container
-from uno.usecase.get_all_usecase import GetAllUsecase
+from uno.usecase.get_game_info_usecase import GetGameInfoUseCase
 from dependency_injector.wiring import inject, Provide
 
 @inject
-def get_all(usecase: GetAllUsecase = Provide[Container.getAllUsecase]):
+def get_game_info(usecase: GetGameInfoUseCase = Provide[Container.getGameInfoUseCase]):
     
     input_unchecked_dict = merge_request_dict(request)
     game_id = input_unchecked_dict.get("game_id")

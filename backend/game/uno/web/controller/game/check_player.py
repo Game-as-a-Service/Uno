@@ -4,7 +4,7 @@ from typing import Any
 from flask import request
 from uno.web.controller.util.api_request_base_schema import merge_request_dict
 from uno.web.containers import Container
-from uno.usecase.check_player_usecase import CheckPlayerUsecase, CheckPlayerUsecaseInput, CheckPlayerUsecaseOutput
+from uno.usecase.check_player_usecase import CheckPlayerUseCase, CheckPlayerUsecaseInput, CheckPlayerUsecaseOutput
 from uno.web.controller.util.base_response import BasePresenter
 from dependency_injector.wiring import inject, Provide
 
@@ -36,7 +36,7 @@ class CheckPlayerPresenter(CheckPlayerUsecaseOutput, BasePresenter):
         return res
 
 @inject
-def check_player(usecase: CheckPlayerUsecase = Provide[Container.checkPlayerUsecase]):
+def check_player(usecase: CheckPlayerUseCase = Provide[Container.checkPlayerUsecase]):
 
     input_unchecked_dict = merge_request_dict(request)
 

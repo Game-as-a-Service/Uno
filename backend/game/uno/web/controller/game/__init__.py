@@ -6,11 +6,11 @@ blueprint = Blueprint('game', __name__)
 # api
 # ---
 
-# http://localhost:5000/game/get_all?game_id=1
-from .get_all import get_all as _get_all
-@blueprint.route("/get_all", methods = ["GET", "POST"])
-def get_all():
-    return _get_all(**locals())
+# http://localhost:5000/game/get_game_info?game_id=1
+from .get_game_info import get_game_info as _get_game_info
+@blueprint.route("/get_game_info", methods = ["GET", "POST"])
+def get_game_info():
+    return _get_game_info(**locals())
 
 # http://localhost:5000/game/create_game?game_id=1
 # http://localhost:5000/game/create_game?game_id=1&present=json

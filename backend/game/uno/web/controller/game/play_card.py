@@ -5,7 +5,7 @@ from uno.usecase.play_card_usecase import PlayCardUsecase
 from dependency_injector.wiring import inject, Provide
 
 @inject
-def play_card(usecase: PlayCardUsecase = Provide[Container.playcardGameUseCase]):
+def play_card(usecase: PlayCardUsecase = Provide[Container.playCardGameUseCase]):
 
     input_unchecked_dict = merge_request_dict(request)
     game_id = input_unchecked_dict.get("game_id")
