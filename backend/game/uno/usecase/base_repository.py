@@ -8,9 +8,9 @@ class BaseRepository(Generic[T], metaclass=abc.ABCMeta):
     
     @abc.abstractmethod
     def save_or_update(self, object: T) -> str:
-        pass
+        raise NotImplementedError("save_or_update not implemented")
 
     @abc.abstractmethod
     def get(self, id) -> Optional[T]:
-        pass
+        raise NotImplementedError("get not implemented")
     
