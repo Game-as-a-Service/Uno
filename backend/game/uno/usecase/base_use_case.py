@@ -1,6 +1,7 @@
 
 import abc
-
+from enum import IntEnum, unique
+from typing import Any, Optional
 class BaseUseCaseInput(metaclass=abc.ABCMeta):
     """ command 輸入 """
 
@@ -8,21 +9,17 @@ class BaseUseCaseInput(metaclass=abc.ABCMeta):
 
 class BaseUseCaseOutput(metaclass=abc.ABCMeta):
     """ command 輸出 """
-    
-    @abc.abstractmethod
-    def onSuccess(self):
-        """ command 執行成功 """
-        raise NotImplementedError("onSuccess not implemented")
-    
-    @abc.abstractmethod
-    def onError(self):
-        """ command 執行失敗 """
-        raise NotImplementedError("onError not implemented")
+
+    isSuccess: Optional[bool] = None
+    """ command 是否成功 預設為 None 未知 """
+
+    error = Exception('Unknown error')
+    """ command 錯誤原因 """
 
 class BaseUseCase(metaclass=abc.ABCMeta):
     
     @abc.abstractmethod
-    def execute(self, input: BaseUseCaseInput, output: BaseUseCaseOutput):
+    def execute(self, input: Any, output: Any):
         """ 執行 command """
         raise NotImplementedError("execute not implemented")
     

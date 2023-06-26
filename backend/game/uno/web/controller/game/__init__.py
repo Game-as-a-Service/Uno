@@ -13,6 +13,7 @@ def get_all():
     return _get_all(**locals())
 
 # http://localhost:5000/game/create_game?game_id=1
+# http://localhost:5000/game/create_game?game_id=1&present=json
 from .create_game import create_game as _create_game
 @blueprint.route("/create_game", methods = ["GET", "POST"])
 def create_game():
