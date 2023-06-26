@@ -7,6 +7,7 @@ blueprint = Blueprint('game', __name__)
 # ---
 
 # http://localhost:5000/game/get_game_info?game_id=1
+# http://localhost:5000/game/get_game_info?game_id=1&present=json
 from .get_game_info import get_game_info as _get_game_info
 @blueprint.route("/get_game_info", methods = ["GET", "POST"])
 def get_game_info():
