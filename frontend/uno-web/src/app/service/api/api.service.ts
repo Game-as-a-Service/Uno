@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { timeout } from 'rxjs/operators';
 import { CheckPlayerResponse } from './schema/check-player';
 import { CreateGameResponse } from './schema/create-game';
+import { JoinGameResponse } from './schema/join-game';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,16 @@ export class ApiService {
     let header = {}
     let body = {
       game_id: -1
+    }
+    return this.convenientPost(path, body, header)
+  }
+
+  async joinGame(game_id: number, player_id: number): Promise<JoinGameResponse> {
+    let path = `http://localhost:5000/game/join_game`
+    let header = {}
+    let body = {
+      game_id,
+      player_id,
     }
     return this.convenientPost(path, body, header)
   }
