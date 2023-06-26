@@ -4,6 +4,7 @@ import { timeout } from 'rxjs/operators';
 import { CheckPlayerResponse } from './schema/check-player';
 import { CreateGameResponse } from './schema/create-game';
 import { JoinGameResponse } from './schema/join-game';
+import { GetGameListResponse } from './schema/get-game-list';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,13 @@ export class ApiService {
       game_id,
       player_id,
     }
+    return this.convenientPost(path, body, header)
+  }
+
+  async getGameList(): Promise<GetGameListResponse> {
+    let path = `http://localhost:5000/game/get_game_list`
+    let header = {}
+    let body = {}
     return this.convenientPost(path, body, header)
   }
 
@@ -87,5 +95,8 @@ export class ApiResponse {
 
   get isSuccess() {
     return this.body?.isSuccess ?? false
+  }
+  get errorMsg() {
+    return this.body?.error ?? ''
   }
 }

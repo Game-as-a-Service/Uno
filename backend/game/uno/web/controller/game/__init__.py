@@ -12,8 +12,8 @@ from .get_game_info import get_game_info as _get_game_info
 def get_game_info():
     return _get_game_info(**locals())
 
-# http://localhost:5000/game/create_game?game_id=1
-# http://localhost:5000/game/create_game?game_id=1&present=json
+# http://localhost:5000/game/create_game?game_id=-1
+# http://localhost:5000/game/create_game?game_id=-1&present=json
 from .create_game import create_game as _create_game
 @blueprint.route("/create_game", methods = ["GET", "POST"])
 def create_game():
@@ -44,3 +44,10 @@ from .check_player import check_player as _check_player
 @blueprint.route("/check_player", methods = ["GET", "POST"])
 def check_player():
     return _check_player(**locals())
+
+# http://localhost:5000/game/get_game_list
+# http://localhost:5000/game/get_game_list?present=json
+from .get_game_list import get_game_list as _get_game_list
+@blueprint.route("/get_game_list", methods = ["GET", "POST"])
+def get_game_list():
+    return _get_game_list(**locals())

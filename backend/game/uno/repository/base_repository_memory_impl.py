@@ -20,3 +20,6 @@ class BaseRepositoryInMemoryImpl(Generic[T]):
             if getattr(object, "id") == id:
                 return object
         return None
+    
+    def get_all(self) -> List[T]:
+        return self.object_list

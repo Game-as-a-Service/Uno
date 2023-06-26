@@ -10,6 +10,7 @@ import { ApiService } from 'src/app/service/api/api.service';
 export class LobbyComponent implements OnInit {
 
   player_id = -1
+  game_id_list: number[] = []
 
   // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
 
@@ -28,29 +29,48 @@ export class LobbyComponent implements OnInit {
     else {
       this.router.navigate(['/'])
     }
+
+    this.onRefreshGameClicked()
   }
 
   // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
 
   async onCreateJoinClicked() {
 
-    let result_create = await this.api.createGame()
-    if (!result_create.isSuccess) {
+    let result = await this.api.createGame()
+    if (!result.isSuccess) {
+      alert(result.errorMsg)
       return
     }
 
-    console.log('result_create', result_create);
+    console.log('result_create', result);
 
-    let game_id = result_create.body.game_id
+    let game_id = result.body.game_id
     if (!game_id) {
       return
     }
 
-    let player_id = this.player_id
-    let result_join = await this.api.joinGame(game_id, player_id)
-    console.log('result_join', result_join);
+    this.onJoinGameClicked(game_id)
+  }
 
-    if (!result_join.isSuccess) {
+  async onRefreshGameClicked() {
+
+    let result = await this.api.getGameList()
+    if (!result.isSuccess) {
+      alert(result.errorMsg)
+      return
+    }
+    this.game_id_list = result.body.game_id_list
+  }
+
+  async onJoinGameClicked(game_id: number) {
+
+    let player_id = this.player_id
+    let result = await this.api.joinGame(game_id, player_id)
+    console.log('result', result);
+
+    if (!result.isSuccess) {
+      alert(result.errorMsg)
       return
     }
 
