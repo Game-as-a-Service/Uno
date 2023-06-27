@@ -172,7 +172,7 @@ def test_只有房主能開始遊戲():
     assert game.state==GameState.preparing
 
     
-def test_玩家不能開始遊戲():
+def test_非房主不能開始遊戲():
     #Arrange > given
     game_id = 2
     game = Game.createGame(game_id)
@@ -254,3 +254,21 @@ def test_決定第一玩家():
 
     # Assert
     assert game.turnPlayerId == 102
+
+def test_只有一個人抽牌():
+    # Arrange
+    game_id = 2
+    game = Game.createGame(game_id)
+    game.state = GameState.preparing
+    game.players = [101, 102, 103]
+    deck_A = Deck(101, [Card(CardSymbol.N1, CardColor.Red, CardFunction.Nouse)])
+    deck_B = Deck(102, [])
+    deck_C = Deck(103, [])
+    
+    # Act
+    new_card = Card(CardSymbol.N8, CardColor.Red, CardFunction.Nouse)
+    deck_B.addCard(new_card)
+    game.decideFirstPlayer([deck_A, deck_B, deck_C])
+
+    # Assert
+    assert game.turnPlayerId == 0

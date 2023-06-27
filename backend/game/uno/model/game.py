@@ -125,6 +125,11 @@ class Game:
             raise UnoError("No deck")
         
         # do
+        # 檢查是否都有牌
+        for deck in deckList:
+            if len(deck.cardList) <= 0:
+                return
+
         maxDeck = deckList[0]
         for deck in deckList:
             if deck > maxDeck:

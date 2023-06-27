@@ -1,0 +1,7 @@
+
+<button (click)="onCreateJoinClicked()">建立遊戲並加入</button>
+
+<button (click)="onRefreshGameClicked()">刷新遊戲列表</button>
+
+<div *ngFor="let game_id of game_id_list">
+  <button (click)="onJoinGameClicked(game_id)">{{game_id}}</button>

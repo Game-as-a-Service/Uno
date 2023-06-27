@@ -13,10 +13,13 @@ class BaseRepositoryInMemoryImpl(Generic[T]):
     def save_or_update(self, object: T):
         if not object in self.object_list:
             self.object_list.append(object)
-        print(self.object_list)
+        # print("save_or_update", self.object_list)
     
     def get(self, id) -> Optional[T] :
         for object in self.object_list:
             if getattr(object, "id") == id:
                 return object
         return None
+    
+    def get_all(self) -> List[T]:
+        return self.object_list
