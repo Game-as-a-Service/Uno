@@ -35,6 +35,7 @@ export class GameComponent implements OnInit {
       setInterval(() => {
         this.onRefreshGameClicked()
       }, 3000)
+      this.onRefreshGameClicked()
     }
     else {
       this.router.navigate(['/'])
@@ -62,4 +63,15 @@ export class GameComponent implements OnInit {
     this.player_list = result.body.player_list
     this.deck_list = result.body.deck_list
   }
+
+  async onStartGameClicked() {
+
+    let result = await this.api.startGame(this.game_id, this.player_id)
+    if (!result.isSuccess) {
+      alert(result.errorMsg)
+      return
+    }
+    this.onRefreshGameClicked()
+  }
+
 }
