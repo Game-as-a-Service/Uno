@@ -7,6 +7,7 @@ import { JoinGameResponse } from './schema/join-game';
 import { GetGameListResponse } from './schema/get-game-list';
 import { GetGameInfoResponse } from './schema/get-game-info';
 import { StartGameResponse } from './schema/start-game';
+import { PlayCardResponse } from './schema/play-card';
 
 @Injectable({
   providedIn: 'root'
@@ -70,6 +71,17 @@ export class ApiService {
     let body = {
       game_id,
       player_id,
+    }
+    return this.convenientPost(path, body, header)
+  }
+
+  async playCard(game_id: number, player_id: number, index: number): Promise<PlayCardResponse> {
+    let path = `http://localhost:5000/game/play_card`
+    let header = {}
+    let body = {
+      game_id,
+      player_id,
+      index,
     }
     return this.convenientPost(path, body, header)
   }

@@ -11,7 +11,9 @@
 
 <div *ngFor="let player of player_list">
   <p>{{ player.id }}</p>
-  <div *ngFor="let card of getCardList(player.id)">
-    <button>顏色:{{ card.color }} 符號:{{ card.symbol }}</button>
+  <div *ngFor="let card of getCardList(player.id); let i = index">
+    <button
+      (click)="onPlayCardClicked(player.id, i)"
+    >顏色:{{ card.color }} 符號:{{ card.symbol }}</button>
   </div>
 </div>

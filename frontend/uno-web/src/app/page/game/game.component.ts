@@ -74,4 +74,13 @@ export class GameComponent implements OnInit {
     this.onRefreshGameClicked()
   }
 
+  async onPlayCardClicked(player_id: number, index: number) {
+
+    let result = await this.api.playCard(this.game_id, player_id, index)
+    if (!result.isSuccess) {
+      alert(result.errorMsg)
+      return
+    }
+    this.onRefreshGameClicked()
+  }
 }

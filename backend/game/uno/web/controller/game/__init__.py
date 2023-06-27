@@ -35,6 +35,7 @@ def start_game():
     return _start_game(**locals())
 
 # http://localhost:5000/game/play_card?game_id=1&player_id=101&index=0
+# http://localhost:5000/game/play_card?game_id=1&player_id=101&index=0&present=json
 from .play_card import play_card as _play_card
 @blueprint.route("/play_card", methods = ["GET", "POST"])
 def play_card():
