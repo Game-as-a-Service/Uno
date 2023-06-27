@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api/api.service';
-import { DeckDTO, PlayerDTO } from 'src/app/service/api/schema/get-game-info';
+import { CardDTO, DeckDTO, PlayerDTO } from 'src/app/service/api/schema/get-game-info';
+import { CardColor, CardColors2DisplayStr, CardSymbol, CardSymbol2DisplayStr, GameStates, GameStates2DisplayStr } from 'src/app/util/const';
 
 @Component({
   selector: 'app-game',
@@ -11,7 +12,7 @@ import { DeckDTO, PlayerDTO } from 'src/app/service/api/schema/get-game-info';
 export class GameComponent implements OnInit {
 
   game_id = -1
-  game_states = -1
+  game_states = GameStates.unknown
   player_id = -1
   host = -1
   player_list: PlayerDTO[] = []
@@ -43,12 +44,29 @@ export class GameComponent implements OnInit {
   }
 
   // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
+  getGameStatesDisplayStr() {
+    return GameStates2DisplayStr[this.game_states]
+  }
+
   getCardList(player_id: number) {
     let deck = this.deck_list.find(deck => deck.player_id == player_id)
     if (!deck) {
       return []
     }
     return deck.card_list
+  }
+
+  getCardDisplayStr(dto: CardDTO) {
+
+    let result = ''
+    if (dto) {
+      let color: CardColor = dto.color
+      result += CardColors2DisplayStr[color]
+      let symbol: CardSymbol = dto.symbol
+      result += CardSymbol2DisplayStr[symbol]
+    }
+
+    return result
   }
 
   // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====

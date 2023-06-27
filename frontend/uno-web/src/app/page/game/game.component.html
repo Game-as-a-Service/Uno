@@ -1,5 +1,5 @@
 
-<p>遊戲局:{{ game_id }} 狀態:{{ game_states }}</p>
+<p>遊戲局:{{ game_id }} 狀態:{{ getGameStatesDisplayStr() }}</p>
 <button
   *ngIf="game_states == 1"
   (click)="onStartGameClicked()"
@@ -14,6 +14,6 @@
   <div *ngFor="let card of getCardList(player.id); let i = index">
     <button
       (click)="onPlayCardClicked(player.id, i)"
-    >顏色:{{ card.color }} 符號:{{ card.symbol }}</button>
+    >{{ getCardDisplayStr(card) }}</button>
   </div>
 </div>
