@@ -5,6 +5,7 @@ import { CheckPlayerResponse } from './schema/check-player';
 import { CreateGameResponse } from './schema/create-game';
 import { JoinGameResponse } from './schema/join-game';
 import { GetGameListResponse } from './schema/get-game-list';
+import { GetGameInfoResponse } from './schema/get-game-info';
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +50,15 @@ export class ApiService {
     let path = `http://localhost:5000/game/get_game_list`
     let header = {}
     let body = {}
+    return this.convenientPost(path, body, header)
+  }
+
+  async getGameInfo(game_id: number): Promise<GetGameInfoResponse> {
+    let path = `http://localhost:5000/game/get_game_info`
+    let header = {}
+    let body = {
+      game_id
+    }
     return this.convenientPost(path, body, header)
   }
 

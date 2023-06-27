@@ -47,7 +47,6 @@ class GetGameInfoPresenter(GetGameInfoUseCaseOutput, BasePresenter):
             result = {
                 "symbol": card.symbol,
                 "color": card.color,
-                "function": card.function,
             }
             return result
 
