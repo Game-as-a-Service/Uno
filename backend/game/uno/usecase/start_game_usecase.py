@@ -40,7 +40,11 @@ class StartGameUseCase(BaseUseCase):
             game.state = GameState.playing
             # TODO: 直接給牌
             for player_id in game.players:
-                deck = Deck(player_id, [Card(CardSymbol.N1, CardColor.Red, CardFunction.Nouse)])
+                deck = Deck(player_id, [
+                    Card(CardSymbol.N1, CardColor.Red, CardFunction.Nouse),
+                    Card(CardSymbol.N3, CardColor.Blue, CardFunction.Nouse),
+                    Card(CardSymbol.N6, CardColor.Green, CardFunction.Nouse),
+                ])
                 self.deckRepo.save_or_update(deck)
 
             # 存
