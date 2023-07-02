@@ -53,4 +53,10 @@ def check_player():
 from .get_game_list import get_game_list as _get_game_list
 @blueprint.route("/get_game_list", methods = ["GET", "POST"])
 def get_game_list():
-    return _get_game_list(**locals())
+    return _get_game_list(**locals()) 
+
+# http://localhost:5000/game/test5
+from .test import test2 as test3
+@blueprint.route("/test5" , methods = ["GET", "POST"])
+def test6():
+    return test3(**locals()) 
