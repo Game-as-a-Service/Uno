@@ -8,6 +8,7 @@ import { LobbyComponent } from './page/lobby/lobby.component';
 import { WaitComponent } from './page/wait/wait.component';
 import { GameComponent } from './page/game/game.component';
 import { FormsModule } from '@angular/forms'
+import { ConfigServiceLoader } from './service/config/config.service.loader';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import { FormsModule } from '@angular/forms'
     AppRoutingModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    ConfigServiceLoader,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
