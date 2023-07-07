@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ConfigService } from './service/config/config.service';
+import { LayoutService } from './service/layout/layout.service';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +12,10 @@ export class AppComponent {
 
   // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
   constructor(
-    private titleService: Title,
+    private title: Title,
+    private layout: LayoutService,
   ) {
-    this.titleService.setTitle(ConfigService.useSetting.lobby.title)
+    this.title.setTitle(ConfigService.useSetting.lobby.title)
+    this.layout.kickUpdate()
   }
 }
