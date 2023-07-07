@@ -10,7 +10,7 @@ export function devConfigSetting(): ConfigSetting {
   const result = {
     lobby: {
       title: "(本地開發)",
-      api: "http://localhost:5000/",
+      api: "http://localhost:5000",
     },
   }
   return result;

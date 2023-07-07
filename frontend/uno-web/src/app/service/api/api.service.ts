@@ -8,20 +8,27 @@ import { GetGameListResponse } from './schema/get-game-list';
 import { GetGameInfoResponse } from './schema/get-game-info';
 import { StartGameResponse } from './schema/start-game';
 import { PlayCardResponse } from './schema/play-card';
+import { ConfigService } from '../config/config.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
+  host = '' // http://localhost:5000
+
+  // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
+
   constructor(
     private http: HttpClient,
-  ) { }
+  ) {
+    this.host = ConfigService.useSetting.lobby.api
+  }
 
   // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
 
   async checkPlayer(player_id: number): Promise<CheckPlayerResponse> {
-    let path = `http://localhost:5000/game/check_player`
+    let path = `${this.host}/game/check_player`
     let header = {}
     let body = {
       player_id
@@ -30,7 +37,7 @@ export class ApiService {
   }
 
   async createGame(): Promise<CreateGameResponse> {
-    let path = `http://localhost:5000/game/create_game`
+    let path = `${this.host}/game/create_game`
     let header = {}
     let body = {
       game_id: -1
@@ -39,7 +46,7 @@ export class ApiService {
   }
 
   async joinGame(game_id: number, player_id: number): Promise<JoinGameResponse> {
-    let path = `http://localhost:5000/game/join_game`
+    let path = `${this.host}/game/join_game`
     let header = {}
     let body = {
       game_id,
@@ -49,14 +56,14 @@ export class ApiService {
   }
 
   async getGameList(): Promise<GetGameListResponse> {
-    let path = `http://localhost:5000/game/get_game_list`
+    let path = `${this.host}/game/get_game_list`
     let header = {}
     let body = {}
     return this.convenientPost(path, body, header)
   }
 
   async getGameInfo(game_id: number): Promise<GetGameInfoResponse> {
-    let path = `http://localhost:5000/game/get_game_info`
+    let path = `${this.host}/game/get_game_info`
     let header = {}
     let body = {
       game_id
@@ -66,7 +73,7 @@ export class ApiService {
 
   async startGame(game_id: number, player_id: number): Promise<StartGameResponse> {
 
-    let path = `http://localhost:5000/game/start_game`
+    let path = `${this.host}/game/start_game`
     let header = {}
     let body = {
       game_id,
@@ -76,7 +83,7 @@ export class ApiService {
   }
 
   async playCard(game_id: number, player_id: number, index: number): Promise<PlayCardResponse> {
-    let path = `http://localhost:5000/game/play_card`
+    let path = `${this.host}/game/play_card`
     let header = {}
     let body = {
       game_id,
