@@ -1,0 +1,34 @@
+
+header {
+  display:inline-block;
+  width: 100%;
+  height: 20%;
+  background-color: green;
+}
+
+content {
+
+  display: flex;
+  flex-wrap: wrap;
+
+
+  .player-list {
+    width: 60%;
+    height: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-content: baseline; // 換行中間不留白
+
+    .player-line {
+      width: 100%;
+      height: 10%;
+    }
+  }
+  .start-button {
+    width: 40%;
+    height: 100%;
+  }
+
+
+}
