@@ -14,16 +14,20 @@ content {
   background-color: purple;
 
   display: flex;
+  overflow-y: scroll;
+
   flex-wrap: wrap;
+  align-content: baseline; // 換行中間不留白
 
   .tool-bar {
     width: 100%;
+    height: 10%;
     display: flex;
     flex-wrap: wrap;
-
   }
   .title-bar {
     width: 100%;
+    height: 10%;
     display: flex;
     flex-wrap: wrap;
     div {
@@ -32,6 +36,7 @@ content {
   }
   .game-line {
     width: 100%;
+    height: 10%;
     display: flex;
     flex-wrap: wrap;
     div {
