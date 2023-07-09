@@ -43,6 +43,13 @@
 
 ## Quick start
 
+code /Users/w91379137/.ngrok2/
+ngrok start --all
+然後把後端的公開網址填到 前端的 config 去
+
+打開後端要可以看 hello world
+打開前端可以遊玩
+
 ## Test
 
 ## Deploy
