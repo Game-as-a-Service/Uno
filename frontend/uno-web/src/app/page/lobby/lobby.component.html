@@ -1,7 +1,34 @@
 
-<button (click)="onCreateJoinClicked()">建立遊戲並加入</button>
 
-<button (click)="onRefreshGameClicked()">刷新遊戲列表</button>
+<header>
+  <button (click)="onCreateJoinClicked()">建立遊戲並加入</button>
+</header>
 
-<div *ngFor="let game_id of game_id_list">
-  <button (click)="onJoinGameClicked(game_id)">{{game_id}}</button>
+<content>
+
+  <div class="tool-bar">
+    <button (click)="onRefreshGameClicked()">刷新遊戲列表</button>
+  </div>
+
+  <div class="title-bar">
+    <div>編號</div>
+    <div>房主</div>
+    <div>人數</div>
+    <div></div>
+  </div>
+
+  <ng-container *ngFor="let game_id of game_id_list">
+    <div class="game-line">
+      <div>{{game_id}}</div>
+      <div>＊＊＊</div>
+      <div>＊</div>
+      <button (click)="onJoinGameClicked(game_id)">加入</button>
+    </div>
+  </ng-container>
+
+</content>
+
+<footer>
+
+</footer>
+

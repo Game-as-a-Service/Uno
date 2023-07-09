@@ -99,7 +99,7 @@ export class ApiService {
     path: string,
     body: any = {},
     headers: any = {},
-    waitTime: number = 1500,
+    waitTime: number = 15000,
   ): Promise<ApiResponse> {
     // debug(`api path: %o body: %o`, path, body);
     // console.log('api', path);

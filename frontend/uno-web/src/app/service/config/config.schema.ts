@@ -11,6 +11,7 @@ export function devConfigSetting(): ConfigSetting {
     lobby: {
       title: "(本地開發)",
       api: "http://localhost:5000",
+      // api: "https://f3ad-124-218-18-117.ngrok-free.app",
     },
   }
   return result;
