@@ -21,7 +21,7 @@ export class AppComponent {
 
     this.layout.result.subscribe(result => {
       // 算出縮放倍率
-      console.log('layout result', result)
+      // console.log('layout result', result)
       // 因為寬高比一樣 只要算寬 1440 1080
       if (result) {
         this.scale = result.target_width / 1440

@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api/api.service';
+import { BaseComponent } from '../base/base.component';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-lobby',
   templateUrl: './lobby.component.html',
   styleUrls: ['./lobby.component.scss']
 })
-export class LobbyComponent implements OnInit {
+export class LobbyComponent extends BaseComponent {
 
   player_id = -1
   game_id_list: number[] = []
@@ -18,19 +20,24 @@ export class LobbyComponent implements OnInit {
     private route: ActivatedRoute,
     private api: ApiService,
     private router: Router,
-  ) { }
+  ) {
+    super()
+  }
 
   ngOnInit(): void {
     let queryParamMap = this.route.snapshot.queryParamMap
     let player_id = queryParamMap.get('player_id')
     if (player_id) {
       this.player_id = parseInt(player_id)
+      
+      this.autoUnsubscribeObserver(timer(0, 3000))
+      .subscribe(() => {
+        this.onRefreshGameClicked()
+      })
     }
     else {
       this.router.navigate(['/'])
     }
-
-    this.onRefreshGameClicked()
   }
 
   // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
