@@ -12,7 +12,8 @@ export function detectAndChangeLayout(): LayoutResult {
 
   const screenWidth = document.documentElement.clientWidth;
   const screenHeight = document.documentElement.clientHeight;
-  const targetRatio = 16 / 9;
+  // const targetRatio = 16 / 9;
+  const targetRatio = 4 / 3;
 
   return changePageBox(screenWidth, screenHeight, targetRatio);
 }
