@@ -1,4 +1,8 @@
 
+* {
+  --div-text-size: 36px;
+  --btn-text-size: 32px;
+}
 
 header {
   display:inline-block;
@@ -14,33 +18,54 @@ header {
   }
   .game-start-btn {
     position: absolute;
-      left: 971px;
-      top: 83px;
-      width: 419px;
-      height: 151px;
-      border-radius: 30px;
-      font-size: 36px;
-      background-color: #D9D9D9;
-      border: none;
+    left: 971px;
+    top: 83px;
+    width: 419px;
+    height: 151px;
+    border-radius: 30px;
+    font-size: 36px;
+    background-color: var(--bg-dark);
+    border: none;
   }
 }
 
 content {
-  display:inline-block;
+  display: inline-block;
   width: 100%;
   height: 780px;
   // background-color: purple;
+
+  .text-center-outer {
+    position: absolute;
+  }
 
   .tool-bar {
     width: 100%;
     height: 87px;
     position: relative;
+
+    div {
+      font-size: var(--div-text-size);
+    }
+    button {
+      font-size: var(--btn-text-size);
+      background-color: var(--btn-bg-color);
+      color: var(--btn-text-color);
+      width: 254px;
+      height: 66px;
+      border-radius: 30px;
+    }
   }
+
   .title-bar {
     width: 100%;
     height: 87px;
     position: relative;
-    background-color: #D9D9D9;
+    background-color: var(--bg-dark);
+
+    div {
+      font-size: var(--div-text-size);
+    }
   }
 
   .scroll-content {
@@ -57,9 +82,21 @@ content {
       width: 100%;
       height: 122px;
       position: relative;
-      background-color: #F1F1F1;
+      background-color: var(--bg-light);
       border-bottom-width: 1px;
       border-bottom-style: solid;
+
+      div {
+        font-size: var(--div-text-size);
+      }
+      button {
+        font-size: var(--btn-text-size);
+        background-color: var(--btn-bg-color);
+        color: var(--btn-text-color);
+        width: 254px;
+        height: 66px;
+        border-radius: 30px;
+      }
     }
   }
 }
@@ -68,5 +105,5 @@ footer {
   display:inline-block;
   width: 100%;
   height: 0%;
-  background-color: yellow;
+  // background-color: yellow;
 }

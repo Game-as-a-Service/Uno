@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "style/app.scss";
+
+
 :root {
   font-size: 24px;
   --view-setting-width: var(--view-apply-width, 100vw);
