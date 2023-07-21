@@ -59,6 +59,8 @@ content {
     display: flex;
     flex-wrap: wrap;
     align-content: baseline; // 換行中間不留白
+    overflow: auto;
+    padding-bottom: 37px;
 
     .player-line {
       margin-top: 37px;
