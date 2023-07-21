@@ -20,17 +20,19 @@
     <div></div>
   </div>
 
-  <ng-container *ngFor="let game_id of game_id_list">
-    <div class="game-line">
-      <div style="position: absolute; transform: translateY(50%); left: 59px; height: 66px; line-height:100%; font-size: 36px;">0000{{game_id}}</div>
-      <div style="position: absolute; transform: translateY(50%); left: 465px; height: 66px; line-height:100%; font-size: 36px;">神秘人</div>
-      <div style="position: absolute; transform: translateY(50%); left: 887px; height: 66px; line-height:100%; font-size: 36px;">5</div>
-      <button
-        style="position: absolute; transform: translateY(50%); left: 1054px; font-size: 32px; background-color: #818181; border-radius: 30px; width: 254px; height: 66px; border: none; color: white;"
-        (click)="onJoinGameClicked(game_id)"
-      >加入</button>
-    </div>
-  </ng-container>
+  <div class="scroll-content">
+    <ng-container *ngFor="let game_id of game_id_list">
+      <div class="game-line">
+        <div style="position: absolute; transform: translateY(50%); left: 59px; height: 66px; line-height:100%; font-size: 36px;">0000{{game_id}}</div>
+        <div style="position: absolute; transform: translateY(50%); left: 465px; height: 66px; line-height:100%; font-size: 36px;">神秘人</div>
+        <div style="position: absolute; transform: translateY(50%); left: 887px; height: 66px; line-height:100%; font-size: 36px;">5</div>
+        <button
+          style="position: absolute; transform: translateY(50%); left: 1054px; font-size: 32px; background-color: #818181; border-radius: 30px; width: 254px; height: 66px; border: none; color: white;"
+          (click)="onJoinGameClicked(game_id)"
+        >加入</button>
+      </div>
+    </ng-container>
+  </div>
 
 </content>
 

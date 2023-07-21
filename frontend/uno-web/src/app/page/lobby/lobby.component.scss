@@ -31,12 +31,6 @@ content {
   height: 780px;
   // background-color: purple;
 
-  display: flex;
-  overflow-y: scroll;
-
-  flex-wrap: wrap;
-  align-content: baseline; // 換行中間不留白
-
   .tool-bar {
     width: 100%;
     height: 87px;
@@ -48,13 +42,25 @@ content {
     position: relative;
     background-color: #D9D9D9;
   }
-  .game-line {
+
+  .scroll-content {
     width: 100%;
-    height: 122px;
-    position: relative;
-    background-color: #F1F1F1;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
+    height: 606px;
+
+    display: flex;
+    overflow-y: scroll;
+
+    flex-wrap: wrap;
+    align-content: baseline; // 換行中間不留白
+
+    .game-line {
+      width: 100%;
+      height: 122px;
+      position: relative;
+      background-color: #F1F1F1;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+    }
   }
 }
 
