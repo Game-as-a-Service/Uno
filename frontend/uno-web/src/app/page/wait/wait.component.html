@@ -1,8 +1,8 @@
 
 <header>
   <div style="top: 55px; left: 65px;">ROOM : 0000{{ game_id }}</div>
-  <div style="top: 55px; left: 513px;">人數:{{ player_list.length + 1 }}</div>
-  <div style="top: 55px; left: 961px;">狀態:{{ getGameStatesDisplayStr() }}</div>
+  <div style="top: 55px; left: 513px;">人數 : {{ player_list.length + 1 }}</div>
+  <div style="top: 55px; left: 961px;">狀態 : {{ getGameStatesDisplayStr() }}</div>
 </header>
 
 <ng-template #player_card let-obj>
@@ -47,11 +47,20 @@
       </ng-container> -->
     </div>
   </div>
-  <div class="start-button">
-      <button
-        *ngIf="game_states == 1"
-        (click)="onStartGameClicked()"
-      >開始遊戲</button>
+  <div class="button-area">
+    <div class="text-center-outer" style="width: 100%; justify-content: center; flex-direction:column;">
+      <!-- <div class="container">
+
+      </div> -->
+      <button class="start-button"
+          *ngIf="game_states == 1"
+          (click)="onStartGameClicked()"
+        >START</button>
+        <div class="host-text">
+          兩人以上，房主即可按開始遊戲
+        </div>
+    </div>
+
   </div>
 
 </content>
