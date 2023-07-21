@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Subject, fromEvent, interval, merge } from 'rxjs';
+import { BehaviorSubject, Subject, fromEvent, interval, merge } from 'rxjs';
 import { debounce } from 'rxjs/operators';
-import { detectAndChangeLayout } from './layout.util';
+import { LayoutResult, detectAndChangeLayout } from './layout.util';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,8 @@ import { detectAndChangeLayout } from './layout.util';
 export class LayoutService {
 
   private _updateStatus$ = new Subject<any>()
+
+  result = new BehaviorSubject<LayoutResult | undefined>(undefined)
 
   // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
 
@@ -26,7 +28,8 @@ export class LayoutService {
       this._updateStatus$
       .pipe(debounce(_ => interval(10)))
       .subscribe(() => {
-        detectAndChangeLayout()
+        let result = detectAndChangeLayout()
+        this.result.next(result)
       })
     }
   }
