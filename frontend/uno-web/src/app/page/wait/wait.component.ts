@@ -18,7 +18,6 @@ export class WaitComponent extends BaseComponent {
   player_id = -1
   host = -1
   player_list: PlayerDTO[] = []
-  deck_list: DeckDTO[] = []
 
   // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
 
@@ -72,7 +71,6 @@ export class WaitComponent extends BaseComponent {
 
     this.host = result.body.host
     this.player_list = result.body.player_list.filter(player => player.id !== this.host)
-    this.deck_list = result.body.deck_list
   }
 
   async onStartGameClicked() {

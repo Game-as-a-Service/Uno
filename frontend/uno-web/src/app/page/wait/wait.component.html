@@ -5,23 +5,46 @@
   <div style="top: 55px; left: 961px;">狀態:{{ getGameStatesDisplayStr() }}</div>
 </header>
 
+<ng-template #player_card let-obj>
+  <div class="player-card">
+    <div class="text-center-outer" style="left: 36px;">
+      <div class="player-photo"></div>
+    </div>
+    <div class="text-center-outer" style="left: 442px;">
+      <div class="player-id">{{ obj.id }}</div>
+    </div>
+  </div>
+</ng-template>
+
 <content>
   <div class="host-bar">
-    <p>房主:{{ host }} </p>
+    <div class="text-center-outer" style="left: 105px;">
+      <div>房主</div>
+    </div>
+
+    <div class="text-center-outer" style="left: 236px;">
+      <ng-container
+        [ngTemplateOutlet]="player_card"
+        [ngTemplateOutletContext]="{ $implicit: { id: host } }"
+       ></ng-container>
+    </div>
   </div>
 
   <div class="player-list">
-    <p>玩家列表</p>
-
     <div
       class="player-line"
       *ngFor="let player of player_list"
     >
-      <p>{{ player.id }}
-        <ng-container *ngIf="player_id === player.id">
-          *
-        </ng-container>
-      </p>
+      <div class="text-center-outer" style="left: 236px;">
+        <ng-container
+          [ngTemplateOutlet]="player_card"
+          [ngTemplateOutletContext]="{ $implicit: { id: player.id } }"
+        ></ng-container>
+      </div>
+
+      <!-- <ng-container *ngIf="player_id === player.id">
+        *
+      </ng-container> -->
     </div>
   </div>
   <div class="start-button">
