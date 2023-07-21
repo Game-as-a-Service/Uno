@@ -78,6 +78,6 @@ export class LobbyComponent implements OnInit {
       game_id,
       player_id,
     }
-    this.router.navigate(['/game'], { queryParams })
+    this.router.navigate(['/wait'], { queryParams })
   }
 }
