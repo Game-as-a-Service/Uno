@@ -1,10 +1,14 @@
 
 <header>
-  <p>遊戲局:{{ game_id }} 狀態:{{ getGameStatesDisplayStr() }}</p>
-  <p>房主:{{ host }} </p>
+  <div style="top: 55px; left: 65px;">ROOM : 0000{{ game_id }}</div>
+  <div style="top: 55px; left: 513px;">人數:{{ player_list.length + 1 }}</div>
+  <div style="top: 55px; left: 961px;">狀態:{{ getGameStatesDisplayStr() }}</div>
 </header>
 
 <content>
+  <div class="host-bar">
+    <p>房主:{{ host }} </p>
+  </div>
 
   <div class="player-list">
     <p>玩家列表</p>
@@ -18,11 +22,6 @@
           *
         </ng-container>
       </p>
-      <div *ngFor="let card of getCardList(player.id); let i = index">
-        <button
-          (click)="onPlayCardClicked(player.id, i)"
-        >{{ getCardDisplayStr(card) }}</button>
-      </div>
     </div>
   </div>
   <div class="start-button">

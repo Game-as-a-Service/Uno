@@ -53,27 +53,6 @@ export class WaitComponent extends BaseComponent {
     return GameStates2DisplayStr[this.game_states]
   }
 
-  getCardList(player_id: number) {
-    let deck = this.deck_list.find(deck => deck.player_id == player_id)
-    if (!deck) {
-      return []
-    }
-    return deck.card_list
-  }
-
-  getCardDisplayStr(dto: CardDTO) {
-
-    let result = ''
-    if (dto) {
-      let color: CardColor = dto.color
-      result += CardColors2DisplayStr[color]
-      let symbol: CardSymbol = dto.symbol
-      result += CardSymbol2DisplayStr[symbol]
-    }
-
-    return result
-  }
-
   // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
   async onRefreshGameClicked() {
     // console.log('onRefreshGameClicked')
@@ -92,7 +71,7 @@ export class WaitComponent extends BaseComponent {
     }
 
     this.host = result.body.host
-    this.player_list = result.body.player_list
+    this.player_list = result.body.player_list.filter(player => player.id !== this.host)
     this.deck_list = result.body.deck_list
   }
 
