@@ -1,13 +1,19 @@
 
 <header>
-  <p>遊戲局:{{ game_id }} 狀態:{{ getGameStatesDisplayStr() }}</p>
-  <p>房主:{{ host }} </p>
+
+  <div class="text-center-outer" style="left: 65px;">
+    <div>ROOM : 0000{{ game_id }}</div>
+  </div>
+
+  <div class="text-center-outer" style="left: 513px;">
+    <div>狀態 : {{ getGameStatesDisplayStr() }}</div>
+  </div>
+
 </header>
 
 <content>
 
   <div class="player-list">
-    <p>玩家列表</p>
 
     <div
       class="player-line"
@@ -24,12 +30,6 @@
         >{{ getCardDisplayStr(card) }}</button>
       </div>
     </div>
-  </div>
-  <div class="start-button">
-      <button
-        *ngIf="game_states == 1"
-        (click)="onStartGameClicked()"
-      >開始遊戲</button>
   </div>
 
 </content>
