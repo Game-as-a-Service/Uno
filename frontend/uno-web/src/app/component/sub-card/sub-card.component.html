@@ -1,1 +1,14 @@
-<p>sub-card works!</p>
+
+<div class="half-card-area"></div>
+<div class="avatar-area">
+  <img src="/assets/image/avatar.png" />
+</div>
+
+<div class="card-area">
+  <ng-container *ngFor="let card of [0, 1, 2, 3, 4]">
+    <div class="card">
+      <div class="line-1"></div>
+      <div class="line-2"></div>
+    </div>
+  </ng-container>
+</div>
