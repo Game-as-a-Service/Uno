@@ -88,16 +88,6 @@ export class GameComponent extends BaseComponent {
     this.deck_list = result.body.deck_list
   }
 
-  async onStartGameClicked() {
-
-    let result = await this.api.startGame(this.game_id, this.player_id)
-    if (!result.isSuccess) {
-      alert(result.errorMsg)
-      return
-    }
-    this.onRefreshGameClicked()
-  }
-
   async onPlayCardClicked(player_id: number, index: number) {
 
     let result = await this.api.playCard(this.game_id, player_id, index)
