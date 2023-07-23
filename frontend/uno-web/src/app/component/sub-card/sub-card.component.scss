@@ -2,7 +2,7 @@
 .half-card-area {
   position: absolute;
   top: 40%;
-  left: 69px;
+  left: 0px;
   width: 222px;
   height: 30%;
   background-color: var(--bg-dark);
@@ -11,7 +11,7 @@
 .avatar-area {
   position: absolute;
   top: 20%;
-  left: 69px;
+  left: 0px;
   width: 78px;
   height: 78px;
   border-radius: 50%;
@@ -30,7 +30,7 @@
 .card-area {
   position: absolute;
   top: 25%;
-  left: calc(69px + 78px + 10px);
+  left: calc(78px + 10px);
   width: 222px;
   height: 63px;
   // background-color: red;
@@ -43,7 +43,7 @@
   margin-right: -20px;
   width: 40px;
   height: 63px;
-  background-color: #F9F9F9;
+  background-color: #B5B5B5;
   border-radius: 5px;
   border: 1px solid #000000;
 

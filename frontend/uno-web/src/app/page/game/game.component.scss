@@ -38,14 +38,14 @@ content {
     height:1048px;
     display:grid;
 
-    grid-template-columns:[c_0] 20% [c_1] 20% [c_2] 20% [c_3] 20% [c_4] 20% [c_5];
+    grid-template-columns:[c_f] 5% [c_0] 18% [c_1] 18% [c_2] 18% [c_3] 18% [c_4] 18% [c_5] 5%[c_b];
     grid-template-rows:[r_0] 20% [r_1] 20% [r_2] 20% [r_3] 40% [r_4];
   }
   // https://ithelp.ithome.com.tw/articles/10268087
   .box_main {
     position: relative;
     // background-color:green;
-    grid-column:c_0 / c_5;
+    grid-column:c_f / c_b;
     grid-row:r_3 / r_4;
   }
   .box_1 {
