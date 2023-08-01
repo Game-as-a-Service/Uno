@@ -86,8 +86,9 @@ export class GameComponent extends BaseComponent {
     // console.log(this.cardViewDict)
   }
 
-  async onPlayCardClicked(player_id: number, index: number) {
+  async onPlayCardClicked(index: number, player_index: number) {
 
+    let player_id = this.cardViewDict[player_index].player?.id || -1
     let result = await this.api.playCard(this.game_id, player_id, index)
     if (!result.isSuccess) {
       alert(result.errorMsg)

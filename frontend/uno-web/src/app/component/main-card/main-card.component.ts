@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CardViewModel } from '../share/card.viewmodel';
 
 // https://yabeline.tw/Stickers_Data.php?Number=3232447
@@ -12,11 +12,16 @@ export class MainCardComponent implements OnInit {
   @Input()
   viewModel: CardViewModel | undefined
 
+  @Output()
+  cardClicked = new EventEmitter<number>()
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
   // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
-  
+  async onCardClicked(index: number) {
+    this.cardClicked.emit(index)
+  }
 }
