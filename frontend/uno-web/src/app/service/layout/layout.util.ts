@@ -1,16 +1,24 @@
 
-export function detectAndChangeLayout(): void {
+export interface LayoutResult {
+  target_width: number;
+  target_height: number;
+  target_x: number;
+  target_y: number;
+}
+
+export function detectAndChangeLayout(): LayoutResult {
   document.documentElement.style.setProperty('--inner-width', `${document.documentElement.clientWidth}px`);
   document.documentElement.style.setProperty('--inner-height', `${document.documentElement.clientHeight}px`);
 
   const screenWidth = document.documentElement.clientWidth;
   const screenHeight = document.documentElement.clientHeight;
-  const targetRatio = 16 / 9;
+  // const targetRatio = 16 / 9;
+  const targetRatio = 4 / 3;
 
-  changePageBox(screenWidth, screenHeight, targetRatio);
+  return changePageBox(screenWidth, screenHeight, targetRatio);
 }
 
-function changePageBox(width: number, height: number, targetRatio: number): void {
+function changePageBox(width: number, height: number, targetRatio: number): LayoutResult {
   // 框線
   const currentRatio = width / height;
   // tslint:disable-next-line:variable-name
@@ -43,4 +51,11 @@ function changePageBox(width: number, height: number, targetRatio: number): void
   // this.target_y = target_y;
   document.documentElement.style.setProperty('--view-apply-offset-x', `${target_x}px`);
   document.documentElement.style.setProperty('--view-apply-offset-y', `${target_y}px`);
+
+  return {
+    target_width,
+    target_height,
+    target_x,
+    target_y,
+  }
 }

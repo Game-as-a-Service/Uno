@@ -1,13 +1,37 @@
 
 <header>
-  <p>遊戲局:{{ game_id }} 狀態:{{ getGameStatesDisplayStr() }}</p>
-  <p>房主:{{ host }} </p>
+
+  <div class="text-center-outer" style="left: 65px;">
+    <div>ROOM : 0000{{ game_id }}</div>
+  </div>
+
+  <div class="text-center-outer" style="left: 513px;">
+    <div>狀態 : {{ getGameStatesDisplayStr() }}</div>
+  </div>
+
 </header>
 
 <content>
+  <div class="grid_container">
+    <app-main-card class="box_main"
+      [viewModel]="cardViewDict[0]"
+      (cardClicked)="onPlayCardClicked($event, 0)"
+    ></app-main-card>
+    <app-sub-card class="box_1"
+      [viewModel]="cardViewDict[1]"
+      (cardClicked)="onPlayCardClicked($event, 1)"
+      ></app-sub-card>
+    <app-sub-card class="box_2" [viewModel]="cardViewDict[2]"></app-sub-card>
+    <app-sub-card class="box_3" [viewModel]="cardViewDict[3]"></app-sub-card>
+    <app-sub-card class="box_4" [viewModel]="cardViewDict[4]"></app-sub-card>
+    <app-sub-card class="box_5" [viewModel]="cardViewDict[5]"></app-sub-card>
+    <app-sub-card class="box_6" [viewModel]="cardViewDict[6]"></app-sub-card>
+    <app-sub-card class="box_7" [viewModel]="cardViewDict[7]"></app-sub-card>
+    <app-sub-card class="box_8" [viewModel]="cardViewDict[8]"></app-sub-card>
+    <app-sub-card class="box_9" [viewModel]="cardViewDict[9]"></app-sub-card>
+  </div>
 
-  <div class="player-list">
-    <p>玩家列表</p>
+  <!-- <div class="player-list">
 
     <div
       class="player-line"
@@ -24,13 +48,7 @@
         >{{ getCardDisplayStr(card) }}</button>
       </div>
     </div>
-  </div>
-  <div class="start-button">
-      <button
-        *ngIf="game_states == 1"
-        (click)="onStartGameClicked()"
-      >開始遊戲</button>
-  </div>
+  </div> -->
 
 </content>
 

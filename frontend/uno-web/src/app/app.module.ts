@@ -9,6 +9,8 @@ import { WaitComponent } from './page/wait/wait.component';
 import { GameComponent } from './page/game/game.component';
 import { FormsModule } from '@angular/forms'
 import { ConfigServiceLoader } from './service/config/config.service.loader';
+import { MainCardComponent } from './component/main-card/main-card.component';
+import { SubCardComponent } from './component/sub-card/sub-card.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { ConfigServiceLoader } from './service/config/config.service.loader';
     StartComponent,
     LobbyComponent,
     WaitComponent,
-    GameComponent
+    GameComponent,
+    MainCardComponent,
+    SubCardComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,17 @@
+
+<ng-container *ngIf="viewModel">
+  <div class="half-card-area"></div>
+  <div class="avatar-area">
+    <img src="/assets/image/avatar.png" />
+  </div>
+
+  <div class="card-area">
+    <ng-container *ngFor="let card of viewModel.getCardList(); let i = index;">
+      <div class="card" (click)="onCardClicked(i)">
+        <!-- <div class="line-1"></div> -->
+        <!-- <div class="line-2"></div> -->
+        {{ viewModel.getCardDisplayStr(card) }}
+      </div>
+    </ng-container>
+  </div>
+</ng-container>

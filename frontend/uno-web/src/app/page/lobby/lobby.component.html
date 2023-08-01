@@ -1,34 +1,47 @@
 
 
 <header>
-  <button (click)="onCreateJoinClicked()">建立遊戲並加入</button>
+  <div class="game-title">UNO</div>
+  <button class="game-start-btn" (click)="onCreateJoinClicked()">建立新房間</button>
 </header>
 
 <content>
 
   <div class="tool-bar">
-    <button (click)="onRefreshGameClicked()">刷新遊戲列表</button>
+    <div class="text-center-outer" style="left: 59px;">
+      <div>已建立的房間</div>
+    </div>
   </div>
 
   <div class="title-bar">
-    <div>編號</div>
-    <div>房主</div>
-    <div>人數</div>
-    <div></div>
+    <div class="text-center-outer" style="left: 59px;">
+      <div>編號</div>
+    </div>
+    <div class="text-center-outer" style="left: 465px;">
+      <div>房主</div>
+    </div>
+    <div class="text-center-outer" style="left: 887px;">
+      <div>人數</div>
+    </div>
   </div>
 
-  <ng-container *ngFor="let game_id of game_id_list">
-    <div class="game-line">
-      <div>{{game_id}}</div>
-      <div>＊＊＊</div>
-      <div>＊</div>
-      <button (click)="onJoinGameClicked(game_id)">加入</button>
-    </div>
-  </ng-container>
+  <div class="scroll-content">
+    <ng-container *ngFor="let game_id of game_id_list">
+      <div class="game-line">
+        <div class="text-center-outer" style="left: 59px;">
+          <div>0000{{game_id}}</div>
+        </div>
+        <div class="text-center-outer" style="left: 465px;">
+          <div>神秘人</div>
+        </div>
+        <div class="text-center-outer" style="left: 887px;">
+          <div>5</div>
+        </div>
+        <div class="text-center-outer" style="left: 1054px;">
+          <button (click)="onJoinGameClicked(game_id)">加入</button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
 
 </content>
-
-<footer>
-
-</footer>
-

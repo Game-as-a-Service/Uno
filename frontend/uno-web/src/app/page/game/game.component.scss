@@ -1,34 +1,123 @@
 
+* {
+  --small-text-size: 10px;
+  --div-text-size: 36px;
+  --btn-text-size: 32px;
+}
+
+.text-center-outer {
+  position: absolute;
+}
+
 header {
-  display:inline-block;
+  position: relative;
   width: 100%;
-  height: 20%;
-  background-color: green;
+  height: 32px;
+  // background-color: green;
+
+  .text-center-outer {
+    width: 200px;
+    div {
+      position: absolute;
+      font-size: var(--small-text-size);
+    }
+  }
+
 }
 
 content {
 
-  display: flex;
-  flex-wrap: wrap;
+  position: relative;
+  width: 100%;
+  height: 1048px;
 
+  .grid_container {
 
-  .player-list {
-    width: 60%;
-    height: 100%;
+    position: relative;
+    width:100%;
+    height:1048px;
+    display:grid;
 
-    display: flex;
-    flex-wrap: wrap;
-    align-content: baseline; // 換行中間不留白
-
-    .player-line {
-      width: 100%;
-      height: 10%;
-    }
+    grid-template-columns:[c_f] 5% [c_0] 18% [c_1] 18% [c_2] 18% [c_3] 18% [c_4] 18% [c_5] 5%[c_b];
+    grid-template-rows:[r_0] 20% [r_1] 20% [r_2] 20% [r_3] 40% [r_4];
   }
-  .start-button {
-    width: 40%;
-    height: 100%;
+  // https://ithelp.ithome.com.tw/articles/10268087
+  .box_main {
+    position: relative;
+    // background-color:green;
+    grid-column:c_f / c_b;
+    grid-row:r_3 / r_4;
+  }
+  .box_1 {
+    position: relative;
+    // background-color:yellow;
+    grid-column:c_0 / c_1;
+    grid-row:r_2 / r_3;
+  }
+  .box_2 {
+    position: relative;
+    // background-color:blue;
+    grid-column:c_0 / c_1;
+    grid-row:r_1 / r_2;
+  }
+  .box_3 {
+    position: relative;
+    // background-color:deepskyblue;
+    grid-column:c_0 / c_1;
+    grid-row:r_0 / r_1;
+  }
+  .box_4 {
+    position: relative;
+    // background-color:yellow;
+    grid-column:c_1 / c_2;
+    grid-row:r_0 / r_1;
+  }
+  .box_5 {
+    position: relative;
+    // background-color:blue;
+    grid-column:c_2 / c_3;
+    grid-row:r_0 / r_1;
+  }
+  .box_6 {
+    position: relative;
+    // background-color:deepskyblue;
+    grid-column:c_3 / c_4;
+    grid-row:r_0 / r_1;
+  }
+  .box_7 {
+    position: relative;
+    // background-color:yellow;
+    grid-column:c_4 / c_5;
+    grid-row:r_0 / r_1;
+  }
+  .box_8 {
+    position: relative;
+    // background-color:blue;
+    grid-column:c_4 / c_5;
+    grid-row:r_1 / r_2;
+  }
+  .box_9 {
+    position: relative;
+    // background-color:deepskyblue;
+    grid-column:c_4 / c_5;
+    grid-row:r_2 / r_3;
   }
 
+  // display: flex;
+  // flex-wrap: wrap;
+
+  // .player-list {
+  //   width: 60%;
+  //   height: 100%;
+
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //   align-content: baseline; // 換行中間不留白
+
+  //   .player-line {
+  //     width: 100%;
+  //     height: 10%;
+  //   }
+  // }
 
 }

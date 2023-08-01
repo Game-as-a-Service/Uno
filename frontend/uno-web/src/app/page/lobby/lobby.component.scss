@@ -1,46 +1,94 @@
 
+* {
+  --div-text-size: 36px;
+  --btn-text-size: 32px;
+}
+
+.text-center-outer {
+  position: absolute;
+}
 
 header {
   display:inline-block;
   width: 100%;
-  height: 20%;
-  background-color: green;
+  height: 300px;
+  // background-color: green;
+
+  .game-title {
+    position: absolute;
+    left: 90px;
+    top: 59px;
+    font-size: 128px;
+  }
+  .game-start-btn {
+    position: absolute;
+    left: 971px;
+    top: 83px;
+    width: 419px;
+    height: 151px;
+    border-radius: 30px;
+    font-size: 36px;
+    background-color: var(--bg-dark);
+    border: none;
+  }
 }
 
 content {
-  display:inline-block;
+  display: inline-block;
   width: 100%;
-  height: 70%;
-  background-color: purple;
-
-  display: flex;
-  overflow-y: scroll;
-
-  flex-wrap: wrap;
-  align-content: baseline; // 換行中間不留白
+  height: 780px;
+  // background-color: purple;
 
   .tool-bar {
     width: 100%;
-    height: 10%;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .title-bar {
-    width: 100%;
-    height: 10%;
-    display: flex;
-    flex-wrap: wrap;
+    height: 87px;
+    position: relative;
+
     div {
-      width: 25%;
+      font-size: var(--div-text-size);
     }
   }
-  .game-line {
+
+  .title-bar {
     width: 100%;
-    height: 10%;
-    display: flex;
-    flex-wrap: wrap;
+    height: 87px;
+    position: relative;
+    background-color: var(--bg-dark);
+
     div {
-      width: 25%;
+      font-size: var(--div-text-size);
+    }
+  }
+
+  .scroll-content {
+    width: 100%;
+    height: 606px;
+
+    display: flex;
+    overflow-y: scroll;
+
+    flex-wrap: wrap;
+    align-content: baseline; // 換行中間不留白
+
+    .game-line {
+      width: 100%;
+      height: 122px;
+      position: relative;
+      background-color: var(--bg-light);
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+
+      div {
+        font-size: var(--div-text-size);
+      }
+      button {
+        font-size: var(--btn-text-size);
+        background-color: var(--btn-bg-color);
+        color: var(--btn-text-color);
+        width: 254px;
+        height: 66px;
+        border-radius: 30px;
+      }
     }
   }
 }
@@ -48,6 +96,6 @@ content {
 footer {
   display:inline-block;
   width: 100%;
-  height: 10%;
-  background-color: yellow;
+  height: 0%;
+  // background-color: yellow;
 }

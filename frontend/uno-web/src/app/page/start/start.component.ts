@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api/api.service';
+import { BaseComponent } from '../base/base.component';
 
 @Component({
   selector: 'app-start',
   templateUrl: './start.component.html',
   styleUrls: ['./start.component.scss']
 })
-export class StartComponent implements OnInit {
+export class StartComponent extends BaseComponent {
 
   public player_id_str = ''
 
@@ -16,7 +17,9 @@ export class StartComponent implements OnInit {
   constructor(
     private api: ApiService,
     private router: Router,
-  ) { }
+  ) {
+    super()
+  }
 
   ngOnInit(): void {
 
@@ -38,7 +41,7 @@ export class StartComponent implements OnInit {
         game_id,
         player_id,
       }
-      this.router.navigate(['/game'], { queryParams })
+      this.router.navigate(['/wait'], { queryParams })
     }
     else {
       let queryParams = {

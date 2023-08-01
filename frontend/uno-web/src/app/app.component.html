@@ -2,7 +2,18 @@
 <div class="full-page background-setting--game">
   <section class="page-box--outter">
     <section class="page-box--inner">
-      <router-outlet></router-outlet>
+      <!-- 先設定一個大小 1920 * 1080 然後縮放  -->
+      <div
+        [ngStyle]="{'transform': 'scale(' + scale + ')'}"
+        style="
+          transform-origin: top left;
+          width: 1440px;
+          height: 1080px;
+          border: 1px solid #000000;
+        "
+      >
+        <router-outlet></router-outlet>
+      </div>
     </section>
   </section>
 </div>

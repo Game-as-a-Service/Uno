@@ -29,11 +29,11 @@ export enum CardColor {
 export const CardColors2DisplayStr = {
 
   [CardColor.Unknown]: '未知',
-  [CardColor.Blue]: '藍色',
-  [CardColor.Green]: '綠色',
-  [CardColor.Red]: '紅色',
-  [CardColor.Yellow]: '黃色',
-  [CardColor.Wild]: '萬用',
+  [CardColor.Blue]: '藍',
+  [CardColor.Green]: '綠',
+  [CardColor.Red]: '紅',
+  [CardColor.Yellow]: '黃',
+  [CardColor.Wild]: '黑',
 }
 
 export enum CardSymbol {
