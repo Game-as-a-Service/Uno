@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { CardViewModel } from '../share/card.viewmodel';
 
 @Component({
   selector: 'app-sub-card',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sub-card.component.scss']
 })
 export class SubCardComponent implements OnInit {
+
+  @Input()
+  viewModel: CardViewModel | undefined
 
   constructor() { }
 

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { CardViewModel } from '../share/card.viewmodel';
 
 // https://yabeline.tw/Stickers_Data.php?Number=3232447
 @Component({
@@ -8,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainCardComponent implements OnInit {
 
+  @Input()
+  viewModel: CardViewModel | undefined
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  // ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
+  
 }
