@@ -2,10 +2,10 @@
 # pytest -q tests/model/test_game.py
 
 import pytest
-from game.uno.model.card import Card, CardColor, CardFunction, CardSymbol
-from game.uno.model.deck import Deck
-from game.uno.model.draw_pile import Drawpile
-from game.uno.model.game import Game, GameState
+from uno.model.card import Card, CardColor, CardFunction, CardSymbol
+from uno.model.deck import Deck
+from uno.model.draw_pile import Drawpile
+from uno.model.game import Game, GameState
 
 def test_創立遊戲():
     
