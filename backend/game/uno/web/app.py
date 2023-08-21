@@ -13,6 +13,8 @@ container = Container()
 # ====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====.====
 # 準備對外接口
 app = Flask(__name__)
+app.container = container # type: ignore
+# 給測試用
 app.add_url_rule("/", "hello_world", views.hello_world)
 
 from uno.web.controller.game import blueprint as game
