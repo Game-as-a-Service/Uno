@@ -23,10 +23,10 @@ class BasePresenter(metaclass=abc.ABCMeta):
         """ 從物件中查找 presentType key: present """
 
         present = aDict.get("present")
-        if present == "json":
-            self.presentType = PresentType.json
-        else:
+        if present == "web":
             self.presentType = PresentType.web
+        else:
+            self.presentType = PresentType.json
 
     @abc.abstractmethod
     def presentWeb(self) -> Any:

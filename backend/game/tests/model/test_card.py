@@ -2,7 +2,7 @@
 # pytest -q tests/model/test_card.py
 
 import pytest
-from game.uno.model.card import Card, CardSymbol, SimpleCardColor, NumberCardSymbol
+from uno.model.card import Card, CardSymbol, SimpleCardColor, NumberCardSymbol
 
 def test_所有的牌數量():
 
